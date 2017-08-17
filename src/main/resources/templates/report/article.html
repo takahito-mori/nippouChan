@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+</head>
+<body>
+<div style="border: 1px solid #BBB; display: inline-block; padding: 20px;">
+    <h2 th:text="|${report.title}|"></h2>
+    <p>作成者: <span th:text="|${report.user.lastName} ${report.user.firstName}|"></span></p>
+    <p>作成日時: <span th:text="|${report.created}|"></span></p>
+    <div th:text="${report.text}" style="min-width: 600px; min-height: 200px; border: solid 1px #999; padding: 10px;"></div>
+</div>
+<div>
+    <a th:href="@{/}">戻る</a>
+</div>
+</body>
+</html>
