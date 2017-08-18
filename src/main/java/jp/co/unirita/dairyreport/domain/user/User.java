@@ -1,54 +1,133 @@
 package jp.co.unirita.dairyreport.domain.user;
 
-import jp.co.unirita.dairyreport.domain.report.Report;
-
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
+import javax.persistence.*;
 
+import jp.co.unirita.dairyreport.domain.comment.Comment;
+import jp.co.unirita.dairyreport.domain.nippou.Nippou;
+
+import java.util.List;
+
+
+/**
+ * The persistent class for the users database table.
+ * 
+ */
 @Entity
+@Table(name="users")
+@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
 public class User implements Serializable {
-    private String id;
-    private String firstName;
-    private String lastName;
-    private Collection<Report> reports;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @Column(name = "id")
-    public String getId() {
-        return id;
-    }
+	@Id
+	@Column(name="user_id")
+	private String userId;
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	@Column(name="user_kana")
+	private String userKana;
 
-    @Basic
-    @Column(name = "first_name")
-    public String getFirstName() {
-        return firstName;
-    }
+	@Column(name="user_mail")
+	private String userMail;
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	@Column(name="user_name")
+	private String userName;
 
-    @Basic
-    @Column(name = "last_name")
-    public String getLastName() {
-        return lastName;
-    }
+	@Column(name="user_password")
+	private String userPassword;
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	//bi-directional many-to-one association to Comment
+	@OneToMany(mappedBy="user")
+	private List<Comment> comments;
 
-    @OneToMany(mappedBy = "user")
-    public Collection<Report> getReports() {
-        return reports;
-    }
+	//bi-directional many-to-one association to Nippou
+	@OneToMany(mappedBy="user")
+	private List<Nippou> nippous;
 
-    public void setReports(Collection<Report> reportsById) {
-        this.reports = reportsById;
-    }
+	public User() {
+	}
+
+	public String getUserId() {
+		return this.userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+	public String getUserKana() {
+		return this.userKana;
+	}
+
+	public void setUserKana(String userKana) {
+		this.userKana = userKana;
+	}
+
+	public String getUserMail() {
+		return this.userMail;
+	}
+
+	public void setUserMail(String userMail) {
+		this.userMail = userMail;
+	}
+
+	public String getUserName() {
+		return this.userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getUserPassword() {
+		return this.userPassword;
+	}
+
+	public void setUserPassword(String userPassword) {
+		this.userPassword = userPassword;
+	}
+
+	public List<Comment> getComments() {
+		return this.comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public Comment addComment(Comment comment) {
+		getComments().add(comment);
+		comment.setUser(this);
+
+		return comment;
+	}
+
+	public Comment removeComment(Comment comment) {
+		getComments().remove(comment);
+		comment.setUser(null);
+
+		return comment;
+	}
+
+	public List<Nippou> getNippous() {
+		return this.nippous;
+	}
+
+	public void setNippous(List<Nippou> nippous) {
+		this.nippous = nippous;
+	}
+
+	public Nippou addNippous(Nippou nippous) {
+		getNippous().add(nippous);
+		nippous.setUser(this);
+
+		return nippous;
+	}
+
+	public Nippou removeNippous(Nippou nippous) {
+		getNippous().remove(nippous);
+		nippous.setUser(null);
+
+		return nippous;
+	}
+
 }
