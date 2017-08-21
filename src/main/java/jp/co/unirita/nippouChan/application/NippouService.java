@@ -60,8 +60,9 @@ public class NippouService {
      * @param nippouId
      * @return
      */
-
+    /*
     public Nippou getOne(int nippouId) {
         return nippouRepository.findOne(nippouId);
     }
+    */
 }
