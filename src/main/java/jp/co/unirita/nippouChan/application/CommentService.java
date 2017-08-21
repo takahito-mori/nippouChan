@@ -1,6 +1,7 @@
 package jp.co.unirita.nippouChan.application;
 
 import java.sql.Timestamp;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import jp.co.unirita.nippouChan.domain.user.User;
 public class CommentService {
     @Autowired
     CommentRepository commentRepository;
+    private static final AtomicInteger count = new AtomicInteger(0);
 
     /**
      * (サンプル実装)
@@ -29,7 +31,7 @@ public class CommentService {
         Nippou nippou = new Nippou();
         nippou.setNippouId(1);
         comment.setUser(user); // TODO: 現在のログインユーザを取得して設定するようにしたい
-        comment.setCommentId(1);
+        comment.setCommentId(count.incrementAndGet());
         comment.setCommentRegister(new Timestamp(System.currentTimeMillis()));
         comment.setNippou(nippou);
         commentRepository.save(comment);
