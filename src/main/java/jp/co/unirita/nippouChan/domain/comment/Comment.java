@@ -1,4 +1,4 @@
-package jp.co.unirita.dairyreport.domain.comment;
+package jp.co.unirita.nippouChan.domain.comment;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import jp.co.unirita.dairyreport.domain.nippou.Nippou;
-import jp.co.unirita.dairyreport.domain.user.User;
+import jp.co.unirita.nippouChan.domain.nippou.Nippou;
+import jp.co.unirita.nippouChan.domain.user.User;
 
 
 /**
