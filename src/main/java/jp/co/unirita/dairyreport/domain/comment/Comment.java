@@ -1,17 +1,24 @@
 package jp.co.unirita.dairyreport.domain.comment;
 
 import java.io.Serializable;
-import javax.persistence.*;
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 import jp.co.unirita.dairyreport.domain.nippou.Nippou;
 import jp.co.unirita.dairyreport.domain.user.User;
 
-import java.sql.Timestamp;
-
 
 /**
  * The persistent class for the comments database table.
- * 
+ *
  */
 @Entity
 @Table(name="comments")
