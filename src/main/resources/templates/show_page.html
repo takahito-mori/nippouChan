@@ -4,12 +4,15 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<link href="css/show_page.css" rel="stylesheet" />
+	<link href="/css/show_page.css" rel="stylesheet" />
+
 </head>
 <body>
 	<ul id="list-nav">
 		<li class="home"><a th:href="home_page.html">日報chan</a></li>
-		<li class="menu1"><a href="">キャンセル</a></li>
+		<li class="user-id"><a href="">ユーザ情報</a></li>
+		<li class="menu1"><a href="">マイページ</a></li>
+		<li class="menu2"><a href="">ログアウト</a></li>
 	</ul>
     <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
         <div>
