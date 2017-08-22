@@ -21,7 +21,8 @@
         名前	：<input type="text" name="user_name" th:value="*{User.userName}" readonly = "readonly"/><br/>
         社員ID	：<input type="text" name="user_id" th:value="*{User.userId}" readonly = "readonly"/><br/>
         研修内容<br/>
-        <textarea name="nippou_contents" rows="10" cols="40" th:value="*{nippouContents}" readonly = "readonly"></textarea><br/>
+
+        <textarea name="nippou_contents" rows="10" cols="40" th:text="*{nippouContents}" readonly = "readonly"></textarea><br/>
         <!--
         学んだこと
         <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
