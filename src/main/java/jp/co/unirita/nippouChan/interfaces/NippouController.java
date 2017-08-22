@@ -42,6 +42,6 @@ public class NippouController {
     @PostMapping
     public ModelAndView create(@Validated Nippou nippou, BindingResult result) {
         nippouService.create(nippou);
-        return new ModelAndView("write_page");
+        return new ModelAndView("home_page");
     }
 }
