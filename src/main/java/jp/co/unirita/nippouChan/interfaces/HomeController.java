@@ -19,7 +19,7 @@ public class HomeController {
      * @return
      */
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public ModelAndView home(Nippou nippou) {
 //        List<Nippou> reports = nippouService.getListByUserId("test_user");
         ModelAndView mav = new ModelAndView("write_page");

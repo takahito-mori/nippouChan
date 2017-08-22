@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8" />
+	<title>日報chan</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<body>
+	<div class="container">
+
+	<br></br>
+	<br></br>
+	<div class="row">
+	<div class="col-xs-4"></div>
+	<div class="col-xs-4">
+	<h3 class="text-center">日報chan ログインページ</h3>
+	<p class="text-center" th:if="${param.error}">Error!</p>
+	</div>
+	<div class="col-xs-4"></div>
+	</div>
+
+	<br></br>
+	<br></br>
+	<div class="row">
+	<div class="col-xs-4"></div>
+	<div class="col-xs-4">
+	<form th:action="@{/login}" method="POST">
+		<table>
+			<tr class="text-center">
+				<td><label for="userId">ユーザー名 : </label></td>
+				<td><input type="text" id="userId" name="userId" value="00001" /></td>
+			</tr>
+			<tr class="text-center">
+				<td><label for="userPassword">パスワード : </label></td>
+				<td><input type="password" id="userPassword" name="userPassword" value="chan0815" /></td>
+			</tr>
+		</table>
+
+		<br></br>
+
+		&nbsp;
+		<button class="btn btn-primary" style="float:right;" type="submit">ログイン</button>
+
+	</form>
+	</div>
+	<div class="col-xs-4"></div>
+	</div>
+
+	</div>
+</body>
+</html>
