@@ -21,10 +21,12 @@ public class HomeController {
 
     @GetMapping("/home")
     public ModelAndView home(Nippou nippou) {
-//        List<Nippou> reports = nippouService.getListByUserId("test_user");
-        ModelAndView mav = new ModelAndView("write_page");
-  //      mav.addObject("currentTime", new Date());
-        mav.addObject("nippou", nippou);
+ //       List<Nippou> reports = nippouService.getListByUserId("test_user");
+//    	ModelAndView mav = new ModelAndView("home_page");
+    	Nippou report=nippouService.getOne(1);
+    	ModelAndView mav = new ModelAndView("show");
+//        mav.addObject("currentTime", new Date());
+        mav.addObject("nippou", report);
         return mav;
     }
 
