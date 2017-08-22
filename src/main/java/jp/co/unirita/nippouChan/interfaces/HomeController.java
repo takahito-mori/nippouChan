@@ -23,8 +23,9 @@ public class HomeController {
 
     @GetMapping("/home")
     public ModelAndView home(Nippou nippou) {
-    	List<Nippou> report = nippouService.getAll();
-        ModelAndView mav = new ModelAndView("home_page");
+      List<Nippou> report = nippouService.getAll();
+    	        ModelAndView mav = new ModelAndView("home_page");
+
         mav.addObject("nippou", report);
         return mav;
     }
