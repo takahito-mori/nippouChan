@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import jp.co.unirita.nippouChan.application.user.NippouChanUserDetailsService;
 
@@ -30,7 +31,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/js/**", "/css/**").permitAll().antMatchers("/**").authenticated().and()
 				.formLogin().loginPage("/login_page").loginProcessingUrl("/login").usernameParameter("userId")
 				.passwordParameter("userPassword").defaultSuccessUrl("/home", true).failureUrl("/login_page?error=true")
-				.permitAll();
+				.permitAll().and()
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
+                .deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true)
+                .permitAll();
 	}
 
 	@Override
