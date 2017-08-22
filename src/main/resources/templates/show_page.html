@@ -4,15 +4,13 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<style type="text/css">
-	h1 {
-	background: #c2edff;/*背景色*/
-	padding: 0.5em;/*文字まわり（上下左右）の余白*/
-	}
-	</style>
+	<link href="css/show_page.css" rel="stylesheet" />
 </head>
 <body>
-<h1>日報chan</h1>
+	<ul id="list-nav">
+		<li class="home"><a th:href="home_page.html">日報chan</a></li>
+		<li class="menu1"><a href="">キャンセル</a></li>
+	</ul>
     <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
         <div>
         タイトル：<input type="text" name="nippou_title" th:value="*{nippouTitle}" readonly = "readonly"/><br/>
