@@ -1,5 +1,7 @@
 package jp.co.unirita.nippouChan.interfaces;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,11 +23,8 @@ public class HomeController {
 
     @GetMapping("/home")
     public ModelAndView home(Nippou nippou) {
-//      List<Nippou> reports = nippouService.getListByUserId("test_user");
-//    	ModelAndView mav = new ModelAndView("home_page");
-    	Nippou report = nippouService.getOne(1);
-    	ModelAndView mav = new ModelAndView("show");
-//        mav.addObject("currentTime", new Date());
+    	List<Nippou> report = nippouService.getAll();
+        ModelAndView mav = new ModelAndView("home_page");
         mav.addObject("nippou", report);
         return mav;
     }
