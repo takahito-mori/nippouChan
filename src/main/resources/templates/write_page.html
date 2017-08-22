@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8" />
+	<link href="css/write_page.css" rel="stylesheet" />
+</head>
+<body>
+	<ul id="list-nav">
+		<li class="home"><a th:href="home_page.html">日報chan</a></li>
+		<li class="menu1"><a href="">キャンセル</a></li>
+	</ul>
+
+<h2>新規入力</h2>
+    <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
+        <div>
+        名前	：<input type="text" name="user_name" value="testuser" th:field="*{User.userName}"/><br/>
+        社員ID	：<input type="text" name="user_id" value="00001" th:field="*{User.userId}" /><br/>
+        タイトル：<input type="text" name="nippou_title" th:field="*{nippouTitle}" value="testuser"/><br/>
+        日付	：<input type="text" name="nippou_training" th:field="*{nippouTraining}" value="2017-10-17"/><br/>
+        研修内容<br/>
+        <textarea name="nippou_contents" rows="10" cols="40" th:field="*{nippouContents}">testuser</textarea><br/>
+        <!--
+        学んだこと
+        <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
+        困ったこと
+        <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
+        -->
+        <input type="submit" value="作成" />
+        </div>
+    </form>
+</body>
+</html>

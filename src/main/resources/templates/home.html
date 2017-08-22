@@ -5,18 +5,20 @@
 <body>
 <h1>Hello World!!</h1>
 <p th:text="|現在時刻は ${currentTime} です。|"></p>
-<ul th:each="report : ${reports}">
-    <li><a th:href="@{'/reports/' + ${report.id}}" th:text="${report.title}"></a></li>
+<!--
+<ul th:each="nippou : ${nippou}">
+    <li><a th:href="@{'/nippou/' + ${nippou.id}}" th:text="${nippou.title}"></a></li>
 </ul>
+-->
 <div style="border: 1px solid #BBB; display: inline-block; padding: 20px;">
-    <form action="#" th:action="@{/reports}" th:object="${report}" method="POST">
+    <form action="#" th:action="@{/nippou}" th:object="${nippou}" method="POST">
         <div>
             <label>タイトル</label>
-            <input th:field="*{title}" />
+            <input th:field="*{nippouTitle}" />
         </div>
         <div>
             <label>本文</label>
-            <textarea th:field="*{text}" style="display: block; min-width: 600px; min-height: 200px;"></textarea>
+            <textarea th:field="*{nippouContents}" style="display: block; min-width: 600px; min-height: 200px;"></textarea>
         </div>
         <div>
             <input type="submit" value="作成" />
