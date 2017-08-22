@@ -15,12 +15,12 @@
 <body>
 
 	<ul id="list-nav">
-		<li class="home"><a th:href="home_page.html">日報chan</a></li>
+		<li class="home"><a href="/">日報chan</a></li>
 		<li class="user-id"><a href="">ユーザ情報</a></li>
 		<li class="menu1"><a href="">マイページ</a></li>
 		<li class="menu2"><a href="">ログアウト</a></li>
 	</ul>
--
+
 <!-- トグル -->
 <!--
 	<div id="side-menu">
@@ -43,16 +43,16 @@
 
 <!-- 新規作成ボタン -->
 	<form>
-		<input id="new-button" type="button" onClick="location.href='write_page.html'" value="新規" />
+		<input id="new-button" type="button" onClick="location.href='/nippou'" value="新規" />
 	</form>
 
 
 
 <!-- 日報表示 -->
-<!--	<ul>
-		<li th:each="nippou : ${nippou}"><a th:text="${nippouTitle}"></a></li>
+	<ul class="nippou">
+		<li th:each="nippou : ${nippou}"><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}"></a></li>
 	</ul>
--->
+
 
 
 

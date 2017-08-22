@@ -69,6 +69,13 @@ public class NippouService {
         return nippouRepository.findOne(nippouId);
     }
 
+
+    public List<Nippou> getAll() {
+		return nippouRepository.findAll();
+	}
+
+
+
     /**
      * nippouIdをキーにしてDBから日報を取得し、作成日時の降順(最新)でソートして返す
      * @param nippouId
