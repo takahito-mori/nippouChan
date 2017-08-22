@@ -19,11 +19,11 @@ public class HomeController {
      * @return
      */
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public ModelAndView home(Nippou nippou) {
- //       List<Nippou> reports = nippouService.getListByUserId("test_user");
+//      List<Nippou> reports = nippouService.getListByUserId("test_user");
 //    	ModelAndView mav = new ModelAndView("home_page");
-    	Nippou report=nippouService.getOne(1);
+    	Nippou report = nippouService.getOne(1);
     	ModelAndView mav = new ModelAndView("show");
 //        mav.addObject("currentTime", new Date());
         mav.addObject("nippou", report);
