@@ -1,0 +1,22 @@
+use nippou_chan_db;
+
+INSERT INTO `nippou` VALUES (null, 'test_title1',null, null,'2018-08-18','sample1','00001'),
+							(null, 'test_title2',null, null,'2018-08-18','sample2','00002'),						
+							(null, 'test_title3',null, null,'2018-08-18','sample3','00001'),						
+							(null, 'test_title4',null, null,'2018-08-18','sample4','00001'),						
+							(null, 'test_title5',null, null,'2018-08-18','sample5','00001'),						
+							(null, 'test_title6',null, null,'2018-08-18','sample6','00001'),						
+							(null, 'test_title7',null, null,'2018-08-18','sample7','00001'),						
+							(null, 'test_title8',null, null,'2018-08-18','sample8','00001'),						
+							(null, 'test_title9',null, null,'2018-08-18','sample9','00001'),						
+							(null, 'test_title10',null, null,'2018-08-18','sample10','00001'),						
+							(null, 'test_title11',null, null,'2018-08-18','sample11','00001'),						
+							(null, 'test_title12',null, null,'2018-08-18','sample12','00001'),						
+							(null, 'test_title13',null, null,'2018-08-18','sample13','00001'),						
+							(null, 'test_title14',null, null,'2018-08-18','sample14','00001'),						
+							(null, 'test_title15',null, null,'2018-08-18','sample15','00001'),						
+							(null, 'test_title16',null, null,'2018-08-18','sample16','00001'),						
+							(null, 'test_title17',null, null,'2018-08-18','sample17','00001'),
+                            (null, 'test_title18',null, null,'2018-08-18','sample18','00001'),
+                            (null, 'test_title19',null, null,'2018-08-18','sample19','00001'),
+                            (null, 'test_title20',null, null,'2018-08-18','sample20','00001');

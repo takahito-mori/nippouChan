@@ -1,4 +1,4 @@
-CREATE DATABASE `nippou_chan_db`;
+-- CREATE database nippou_chan_db; --
 USE `nippou_chan_db`;
 SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `users`;	
@@ -8,13 +8,13 @@ CREATE TABLE `users` (
 `user_id`			VARCHAR(10) PRIMARY KEY,	
 `user_name`			VARCHAR(30) NOT NULL,	
 `user_kana`			VARCHAR(30) NOT NULL,	
-`user_password`		VARCHAR(50) NOT NULL,	
+`user_password`		VARCHAR(300) NOT NULL,	
 `user_mail`			VARCHAR(300) NOT NULL	
 );				
 				
-INSERT INTO `users` VALUES ('00001', '橋本智広', 'ハシモトトモヒロ', 'chan0815', 'cds2017c@unirita.co.jp');				
-INSERT INTO `users` VALUES ('00002', '午後紅茶', 'ゴゴノコウチャ', 'chan0816', 'cds2017d@unirita.co.jp');				
-INSERT INTO `users` VALUES ('00003', '伊藤将', 'イトウマサル', 'chan0817', 'cds2017e@unirita.co.jp');				
+INSERT INTO `users` VALUES ('00001', '橋本智広', 'ハシモトトモヒロ', '$2a$08$GpxbIacXBwpGxjyycQEHB.0dGvC1TktEtKYXtpPoeK9j66dS3x1ve', 'cds2017c@unirita.co.jp');				
+INSERT INTO `users` VALUES ('00002', '午後紅茶', 'ゴゴノコウチャ', '$2a$08$fonmNj318ULZhRPH2/vkG.LvdGCE4OKQ7HVj7u035oTt9gPicux6C', 'cds2017d@unirita.co.jp');				
+INSERT INTO `users` VALUES ('00003', '伊藤将', 'イトウマサル', '$2a$08$besIKCRBkkImctrGhH7/CuGf9VxZkdajtRuNtohkTJdHUoij6zGiy', 'cds2017e@unirita.co.jp');				
 				
 SET FOREIGN_KEY_CHECKS=0;				
 DROP TABLE IF EXISTS `nippou`;				
