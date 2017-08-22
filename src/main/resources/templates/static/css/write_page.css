@@ -1,0 +1,50 @@
+#list-nav {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	line-height: 1.5;
+	width: auto;
+	height: 77px;
+	background-color: #666;
+	list-style: none;
+	box-shadow: 1px 0 3px 0 #000;
+}
+
+#list-nav li {
+	list-style: none;
+	float: left;
+}
+
+.home {
+	padding-top: 20px;
+	padding-left: 20px;
+}
+.home a {
+	text-decoration: none;
+	font-size: 24px;
+	font-weight:bold;
+	color: #fff;
+}
+
+.user-id {
+	padding-top: 30px;
+	padding-left: 350px;
+}
+.user-id a {
+	text-decoration: none;
+	font-size: 12px;
+	font-weight:bold;
+	color: #fff;
+}
+
+.menu1 {
+	padding-top: 30px;
+    padding-left: 200px;
+}
+.menu1 a {
+	text-decoration: none;
+	font-size: 12px;
+	font-weight:bold;
+	color: #fff;
+}
+
