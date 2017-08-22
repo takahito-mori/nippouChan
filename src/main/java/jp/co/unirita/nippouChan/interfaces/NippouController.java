@@ -1,5 +1,7 @@
 package jp.co.unirita.nippouChan.interfaces;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -44,7 +46,11 @@ public class NippouController {
     @PostMapping
     public ModelAndView create(@Validated Nippou nippou, BindingResult result) {
         nippouService.create(nippou);
-        return new ModelAndView("home_page");
+        List<Nippou> report = nippouService.getAll();
+        ModelAndView mav = new ModelAndView("home_page");
+        mav.addObject("nippou", report);
+
+        return mav;
     }
 
     @GetMapping
