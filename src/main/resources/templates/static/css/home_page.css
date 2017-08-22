@@ -135,18 +135,54 @@
 	color: #fff;
 }
 
-
+}
 /*新規作成ボタン*/
-#new-button {
-	width: 50px;
-	height: 30px;
-	margin-top: 10px;
-	margin-left: 700px;
+
+.new-button {
+	position: relative;
+}
+/*
+.new-button a {
+	width: 200px;
+	display:block;
+	background:#4e91e4;
+	position: absolute;
+	font-size: 20px;
+	text-decoration: none;
+	right: 100px;
+}
+*/
+.raised{
+	right: 60px;
+	top: 110px;
+	padding: 30px 30px 30px 30px;
+	position: absolute;
+  	display: inline-block;
+  	background-color: #0000ff;/*背景色*/
+  	font-weight: bold;
+  	color: #FFF;/*文字色*/
+  	font-size: 20px;/*文字サイズ*/
+  	line-height: 1;
+  	text-decoration: none;
+  	padding: 0.2em 1em;/*ボタン内の余白*/
+  	border-radius: 3px;/*角の丸み*/
+    cursor: pointer;
+  	box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);/*影*/
+  	-webkit-tap-highlight-color: transparent;
+  	transition: .3s ease-out;/*変化を緩やかに*/
+}
+
+.raised:hover{
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);/*浮き上がるように*/
+}
+
+#main {
+	float: left;
 }
 
 /* 検索フォーム */
 .search1{
-	margin-left: 30%;
+	left: 100px;
 	width: 70%;
 	position:absolute;
 	background-color:#fff;
@@ -186,14 +222,27 @@
 	color:#FFF;
 }
 
+
+.nippou {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	width: 124px;
+	height: 64px;
+	margin: auto;
+	list-style: none;
+}
+
 /* 日報一覧 */
 .nippou li {
 	list-style: none;
-	text-decoration: none;
 }
 .nippou li a {
-	line-style: none;
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 30px;
+	line-height: 50px;
 	color: #000;
+
 }
