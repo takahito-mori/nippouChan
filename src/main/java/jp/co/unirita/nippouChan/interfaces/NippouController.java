@@ -59,7 +59,8 @@ public class NippouController {
      */
     @PostMapping
     public ModelAndView create(@Validated Nippou nippou, BindingResult result,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
-        nippouService.create(nippou);
+        nippou.setUser(userDetails.getUser());
+    	nippouService.create(nippou);
         List<Nippou> report = nippouService.getAll();
         User user = userDetails.getUser();
         ModelAndView mav = new ModelAndView("home_page");
