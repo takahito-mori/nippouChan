@@ -1,3 +1,4 @@
+/* 帯 */
 #list-nav {
 	position: relative;
 	padding: 0;
@@ -26,16 +27,6 @@
 	color: #fff;
 }
 
-.user-id {
-	padding-top: 30px;
-	padding-left: 350px;
-}
-.user-id a {
-	text-decoration: none;
-	font-size: 12px;
-	font-weight:bold;
-	color: #fff;
-}
 
 .menu1 {
 	padding-top: 30px;
@@ -46,5 +37,30 @@
 	font-size: 12px;
 	font-weight:bold;
 	color: #fff;
+}
+
+/*新規入力*/
+/*h2とdivの
+width:700px;
+margin-right: auto;
+margin-left : auto;を消せば右寄りになる。
+*/
+h2{
+	width:700px;
+	margin-right: auto;
+	margin-left : auto;
+	background-color: #eee;
+}
+/*日報記入欄*/
+div {
+  	width:700px;
+	margin-right: auto;
+	margin-left : auto;
+	line-height: 2.0em;
+}
+label{
+	margin-right: 10px;
+	width:100px;
+	float: left;
 }
 

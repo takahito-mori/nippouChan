@@ -69,10 +69,16 @@ public class NippouController {
         return mav;
     }
 
+    /*修正↓*/
     @GetMapping
-    public ModelAndView write(@Validated Nippou nippou, BindingResult result) {
-        return new ModelAndView("write_page");
+    public ModelAndView write(@Validated Nippou nippou, BindingResult result,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
+    	User user = userDetails.getUser();
+    	ModelAndView mav = new ModelAndView("write_page");
+    	mav.addObject("loginuser",user);
+
+    	return mav;
     }
+
 
 
 }
