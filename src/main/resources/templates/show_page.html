@@ -30,37 +30,36 @@
         困ったこと
         <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
         -->
-        <input type="submit" value="上書き保存" />
+        <input type="submit" name="update" value="上書き保存" />
 
         コメント<br/>
         <textarea name="comment_contents" rows="5" cols="40" th:fieald="*{commentContents}"></textarea><br/>
-        <input type="submit" value="送信" />
+        <input type="submit" name="send" value="送信" />
         </div>
     </form>
     </div>
     <div th:if="${flag}">
-    <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
-        <div>
-        タイトル：<input type="text" name="nippou_title" th:value="*{nippouTitle}"/><br/>
-        日付	：<input type="text" name="nippou_training" th:value="*{nippouTraining}" readonly = "readonly"/><br/>
-        名前	：<input type="text" name="user_name" th:value="*{User.userName}" readonly = "readonly"/><br/>
-        社員ID	：<input type="text" name="user_id" th:value="*{User.userId}" readonly = "readonly"/><br/>
+    <form th:action="@{/nippou/update}" th:object="${nippou}" method="POST">
+        タイトル：<input type="text" name="nippou_title" th:value="*{nippouTitle}" th:fieald="*{nippouTitle}"/><br/>
+        日付	：<input type="text" name="nippou_training" th:value="*{nippouTraining}" th:fieald="*{nippouTraining}" readonly = "readonly"/><br/>
+        名前	：<input type="text" name="user_name" th:value="*{User.userName}" th:fieald="*{User.userName}" readonly = "readonly"/><br/>
+        社員ID	：<input type="text" name="user_id" th:value="*{User.userId}" th:fieald="*{User.userId}" readonly = "readonly"/><br/>
         研修内容<br/>
 
-        <textarea name="nippou_contents" rows="10" cols="40" th:text="*{nippouContents}"></textarea><br/>
+        <textarea name="nippou_contents" rows="10" cols="40" th:text="*{nippouContents}" th:fieald="*{nippouContents}"></textarea><br/>
         <!--
         学んだこと
         <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
         困ったこと
         <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
         -->
-        <input type="submit" value="上書き保存" />
-
+        <input type="submit" name="update" value="上書き保存" />
+        </form>
+        </div>
+<form>
         コメント<br/>
         <textarea name="comment_contents" rows="5" cols="40" th:fieald="*{commentContents}"></textarea><br/>
-        <input type="submit" value="送信" />
-        </div>
+        <input type="submit" name="send" value="送信" />
     </form>
-    </div>
 </body>
 </html>
