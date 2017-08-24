@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -15,6 +17,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jp.co.unirita.nippouChan.domain.comment.Comment;
 import jp.co.unirita.nippouChan.domain.user.User;
@@ -30,6 +34,7 @@ public class Nippou implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="nippou_id")
 	private int nippouId;
 
@@ -47,6 +52,7 @@ public class Nippou implements Serializable {
 	private String nippouTitle;
 
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	@Column(name="nippou_training")
 	private Date nippouTraining;
 

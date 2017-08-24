@@ -1,11 +1,13 @@
 package jp.co.unirita.nippouChan.application;
 
 import java.sql.Timestamp;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jp.co.unirita.nippouChan.domain.nippou.CreateComparator;
 import jp.co.unirita.nippouChan.domain.nippou.Nippou;
 import jp.co.unirita.nippouChan.domain.nippou.NippouRepository;
 import jp.co.unirita.nippouChan.domain.user.User;
@@ -23,12 +25,14 @@ public class NippouService {
      */
 
     public void create(Nippou nippou) {
-        User user = new User();
-        user.setUserId("00001");
-        nippou.setNippouRegister(new Timestamp(System.currentTimeMillis()));
+
+//        User user = new User();
+//        user.setUserId("00001");
+//      nippou.setUser(user); // TODO: 現在のログインユーザを取得して設定するようにしたい
+//		現段階では手入力しているため、上は必要ない？？
+    	nippou.setNippouRegister(new Timestamp(System.currentTimeMillis()));
         nippou.setNippouEdit(new Timestamp(System.currentTimeMillis()));
-		nippou.setNippouId(getListSize()+1); //       nippou.setNippouId(nippou);
-//        nippou.setUser(user); // TODO: 現在のログインユーザを取得して設定するようにしたい
+//		nippou.setNippouId(getListSize()+1); //       nippou.setNippouId(nippou);
 //        nippou.setCreated(new Date());
         nippouRepository.save(nippou);
     }
@@ -68,25 +72,27 @@ public class NippouService {
 		return nippouRepository.findAll();
 	}
 
-	public int getListSize() {
+//annotetionで自動ID割り振り実装しているため使う機会はないだろう
+    public int getListSize() {
 		List<Nippou> list=getAll();
 		return list.size();
 	}
 
 
-//下はjsでソートするから意味ないですね…
+
+    //最新20件って作成時間順？？編集時間順？？
     /**
      * nippouIdをキーにしてDBから日報を取得し、作成日時の降順(最新)でソートして返す
      * @param nippouId
      * @return List<Nippou>
      */
-    /*
+
     public List<Nippou> getListByNewest(int nippouId) {
     	List<Nippou> nippouList = nippouRepository.findByNippouId(nippouId);
     	Collections.sort(nippouList, new CreateComparator());
     	return nippouList;
     }
-*/
+
     /**
      * nippouIdをキーにしてDBから日報を取得し、研修日時の降順(最新)でソートして返す
      * @param nippouId
