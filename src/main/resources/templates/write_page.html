@@ -4,13 +4,22 @@
 
 <head>
 	<meta charset="UTF-8" />
+	<link href="/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="/css/write_page.css" rel="stylesheet" />
 </head>
 <body>
-	<ul id="list-nav">
-		<li class="home"><a href="/home">日報chan</a></li>
-		<li class="menu1"><a href="/home">キャンセル</a></li>
-	</ul>
+	<!-- 1.ナビゲーションバーの設定 -->
+  	<nav class="navbar navbar-default navbar-fixed-top">
+  		<div class="container">
+  			<!-- 2.ヘッダ情報 -->
+  			<div class="navbar-header">
+  				<a class="navbar-brand font-weight font-family-co" href="/home">日報chan</a>
+  			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/home">キャンセル</a></li>
+			</ul>
+  		</div>
+  	</nav>
 
 <h2>日報新規入力</h2>
     <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
@@ -24,7 +33,7 @@
 	        <label for ="user_traning">日付</label>
 	        <input type="text" name="nippou_training" size="39" th:field="*{nippouTraining}" value="2017-10-17"/> 例:XXXX/YY/ZZ <br/>
 	        <label for ="user_contents">研修内容</label>
-	        <textarea name="nippou_contents" rows="9" cols="40" th:field="*{nippouContents}">testuser</textarea><br/>
+	        <textarea name="nippou_contents" rows="10" cols="40" th:field="*{nippouContents}">testuser</textarea><br/>
 	        <label for ="user_study">学んだこと</label>
 	        <textarea name="nippou_study" rows="10" cols="40" th:field="*{nippouStudy}">testuser</textarea><br/>
 	        <label for ="user_problem">困ったこと</label>

@@ -8,8 +8,8 @@
     <title>HOME</title>
 
     <!-- Bootstrap -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet" />
-    <!-- <link href="../css/home_page.css" rel="stylesheet" /> -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/home_page.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,26 +24,47 @@
   		<div class="container">
   			<!-- 2.ヘッダ情報 -->
   			<div class="navbar-header">
-  				<a class="navbar-brand" href="/home">日報chan</a>
+  				<a class="navbar-brand font-weight font-family-co" href="/home">日報chan</a>
   			</div>
 			<!-- 3.リストの配置 -->
-			<ul class="nav navbar-nav navbar-right">
-			</ul>
+			<!--
 			<form method="POST" id="logout" name="logout"><a class="navbar-link navbar-text navbar-right" th:href="@{/logout}">ログアウト</a></form>
 			<p class="navbar-text navbar-right"><a href="" class="navbar-link">マイページ</a></p>
-			<p class="navbar-text navbar-right"><a th:text="${loginuser.userName} + ${loginuser.userId}"></a></p>
+			-->
+			<ul class="nav navbar-nav margin-left-50">
+				<li><a href="#">マイページ</a></li>
+			</ul>
+
+			<!-- 検索フォーム -->
+			<form class="navbar-form navbar-left margin-left-50" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="検索キーワード" />
+				</div>
+				<button type="submit" class="btn btn-default">検索</button>
+			</form>
+
+			<form method="POST" id="logout" name="logout"><a class="navbar-link navbar-text navbar-right margin-right font-family-co" th:href="@{/logout}"><button type="button" class="btn btn-default navbar-btn">ログアウト</button></a></form>
+			<!-- <button type="button" class="btn btn-default navbar-btn navbar-right margin-right font-family-co">マイページ</button>-->
+
+			<p class="navbar-text navbar-right margin-top-bottom navbar-link" th:text="'社員ID:' + ${loginuser.userId} + '　' + ${loginuser.userName} + 'さん'"></p>
+			<!-- <p class="navbar-text navbar-right margin-top-bottom" th:text="'社員ID:' + ${loginuser.userId}"></p>-->
+
+
   		</div>
   	</nav>
 
+	<!-- 新規作成ボタン -->
+		<p class="navbar-right"><a class="raised" href="/nippou">新規作成</a></p><br/>
+
 	<!-- 日報一覧 -->
-	<p>日報一覧(最新20件)</p>
+	<p class="font-size">日報一覧(最新20件)</p>
 	<div>
 		<ul class="list-group">
 			<li class="list-group-item" th:each="nippou : ${nippou}"><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}" th:value="${nippou.nippouTraining}"></a></li>
 		</ul>
 	</div>
-	<!-- 新規作成ボタン -->
-	<a href="/nippou">新規作成</a>
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
