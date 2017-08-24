@@ -10,10 +10,11 @@
 <body>
 	<ul id="list-nav">
 		<li class="home"><a href="/home">日報chan</a></li>
-		<li class="user-id"><a href="">ユーザ情報</a></li>
+		<li class="user-id"><a href="">ユーザ情報</a><a th:text="${flag}"></a></li>
 		<li class="menu1"><a href="">マイページ</a></li>
 		<li class="menu2"><a href="">ログアウト</a></li>
 	</ul>
+	<div th:unless="${flag}">
     <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
         <div>
         タイトル：<input type="text" name="nippou_title" th:value="*{nippouTitle}" readonly = "readonly"/><br/>
@@ -34,5 +35,28 @@
         <input type="submit" value="送信" />
         </div>
     </form>
+    </div>
+    <div th:if="${flag}">
+    <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
+        <div>
+        タイトル：<input type="text" name="nippou_title" th:value="*{nippouTitle}"/><br/>
+        日付	：<input type="text" name="nippou_training" th:value="*{nippouTraining}" readonly = "readonly"/><br/>
+        名前	：<input type="text" name="user_name" th:value="*{User.userName}" readonly = "readonly"/><br/>
+        社員ID	：<input type="text" name="user_id" th:value="*{User.userId}" readonly = "readonly"/><br/>
+        研修内容<br/>
+
+        <textarea name="nippou_contents" rows="10" cols="40" th:text="*{nippouContents}"></textarea><br/>
+        <!--
+        学んだこと
+        <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
+        困ったこと
+        <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
+        -->
+        コメント<br/>
+        <textarea name="comment_contents" rows="5" cols="40" th:fieald="*{commentContents}" readonly = "readonly"></textarea><br/>
+        <input type="submit" value="送信" />
+        </div>
+    </form>
+    </div>
 </body>
 </html>
