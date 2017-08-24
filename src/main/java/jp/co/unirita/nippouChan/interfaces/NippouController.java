@@ -39,9 +39,10 @@ public class NippouController {
         mav.addObject("nippou", nippou);
         mav.addObject("loginuser",user);
         int flag = 0;
+        /*
         System.out.println(nippou.getUser().getUserId());
         System.out.println(user.getUserId());
-
+		*/
         if(user.getUserId().toString().equals(nippou.getUser().getUserId().toString())) {
         	flag = 1;
         }
