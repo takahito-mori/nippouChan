@@ -1,70 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>HOME</title>
 
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>HOME</title>
-	<link href="/css/home_page.css" rel="stylesheet" />
-	<!--[if It IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-</head>
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link href="../css/home_page.css" rel="stylesheet" /> -->
 
-<body>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+  	<!-- 1.ナビゲーションバーの設定 -->
+  	<nav class="navbar navbar-default navbar-fixed-top">
+  		<div class="container">
+  			<!-- 2.ヘッダ情報 -->
+  			<div class="navbar-header">
+  				<a class="navbar-brand" href="/home">日報chan</a>
+  			</div>
+			<!-- 3.リストの配置 -->
+			<ul class="nav navbar-nav navbar-right">
+			</ul>
+			<form method="POST" id="logout" name="logout"><a class="navbar-link navbar-text navbar-right" th:href="@{/logout}">ログアウト</a></form>
+			<p class="navbar-text navbar-right"><a href="" class="navbar-link">マイページ</a></p>
+			<p class="navbar-text navbar-right"><a th:text="${loginuser.userName} + ${loginuser.userId}"></a></p>
+  		</div>
+  	</nav>
 
-	<ul id="list-nav">
-		<li class="home"><a href="/home">日報chan</a></li>
-		<li class="user-id"><a href="">ユーザ情報</a></li>
-		<li class="menu1"><a href="">マイページ</a></li>
-		<li class="menu2"><form method="POST" id="loguot" name="logout"><a th:href="@{/logout}">ログアウト</a></form></li>
-	</ul>
-
-<!-- トグル -->
-<!--
-	<div id="side-menu">
-  		<input id="side-menu-toggle" type="checkbox">
-  		<label class="toggle-switch" for="side-menu-toggle">ソート方法</label>
-  		<ul class="menu-list">
-    		<li class="list-item"><a href="#">日付</a></li>
-    		<li class="list-item"><a href="#">名前</a></li>
+	<!-- 日報一覧 -->
+	<p>日報一覧(最新20件)</p>
+	<div>
+		<ul class="list-group">
+			<li class="list-group-item" th:each="nippou : ${nippou}"><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}" th:value="${nippou.nippouTraining}"></a></li>
 		</ul>
 	</div>
--->
-
-<!-- 検索フォーム -->
-	<div id="main">
-		<form action="#" name="search1" method="POST">
-			<dl class="search1">
-				<dt><input type="text" name="search" value="" placeholder="検索するテキストを入力..." /></dt>
-				<dd><button><span>検索</span></button></dd>
-			</dl>
-		</form>
-
-<!-- 新規作成ボタン -->
-<!--
-		<p class="new-button"><a href="/nippou">日報の新規作成</a></p>
--->
-		<a class="raised" href="/nippou">日報の新規作成</a>
-	</div>
-
-<!--
-	<form>
-		<input id="new-button" type="button" onClick="location.href='/nippou'" value="新規" />
-	</form>
-	-->
-
-
-
-<!-- 日報一覧 -->
-		<ul class="nippou">
-			<li th:each="nippou : ${nippou}"><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}" th:value="${nippou.nippouTraining}" ></a></li>
-		</ul>
-
-
-
-
-
-</body>
+	<!-- 新規作成ボタン -->
+	<a href="/nippou">新規作成</a>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
 </html>
