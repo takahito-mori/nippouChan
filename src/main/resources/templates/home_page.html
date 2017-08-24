@@ -57,7 +57,7 @@
 		<p class="navbar-right"><a class="raised" href="/nippou">新規作成</a></p><br/>
 
 	<!-- 日報一覧 -->
-	<p class="font-size">日報一覧(最新20件)</p>
+	<p class="nippou font-size">日報一覧(最新20件)</p>
 	<div>
 		<ul class="list-group">
 			<li class="list-group-item" th:each="nippou : ${nippou}"><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}" th:value="${nippou.nippouTraining}"></a></li>
