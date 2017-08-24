@@ -21,12 +21,11 @@
         日付	：<input type="text" name="nippou_training" th:field="*{nippouTraining}" value="2017-10-17"/><br/>
         研修内容<br/>
         <textarea name="nippou_contents" rows="10" cols="40" th:field="*{nippouContents}">testuser</textarea><br/>
-        <!--
-        学んだこと
-        <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
-        困ったこと
-        <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
-        -->
+        学んだこと<br/>
+        <textarea name="nippou_study" rows="10" cols="40" th:field="*{nippouStudy}">testuser</textarea><br/>
+        困ったこと<br/>
+        <textarea name="nippou_problem" rows="10" cols="40" th:field="*{nippouProblem}">testuser</textarea><br/>
+
         <input type="submit" value="作成" />
         </div>
     </form>

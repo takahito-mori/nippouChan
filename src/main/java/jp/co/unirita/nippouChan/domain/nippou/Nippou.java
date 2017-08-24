@@ -37,6 +37,12 @@ public class Nippou implements Serializable {
 	@Column(name="nippou_contents")
 	private String nippouContents;
 
+	@Column(name="nippou_study")
+	private String nippouStudy;
+
+	@Column(name="nippou_problem")
+	private String nippouProblem;
+
 	@Column(name="nippou_edit")
 	private Timestamp nippouEdit;
 
@@ -76,6 +82,22 @@ public class Nippou implements Serializable {
 
 	public void setNippouContents(String nippouContents) {
 		this.nippouContents = nippouContents;
+	}
+
+	public String getNippouStudy() {
+		return this.nippouStudy;
+	}
+
+	public void setNippouStudy(String nippouStudy) {
+		this.nippouStudy = nippouStudy;
+	}
+
+	public String getNippouProblem() {
+		return this.nippouProblem;
+	}
+
+	public void setNippouProblem(String nippouProblem) {
+		this.nippouProblem = nippouProblem;
 	}
 
 	public Timestamp getNippouEdit() {
