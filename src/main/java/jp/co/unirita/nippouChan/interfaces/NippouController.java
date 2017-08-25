@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import jp.co.unirita.nippouChan.application.CommentService;
 import jp.co.unirita.nippouChan.application.NippouService;
 import jp.co.unirita.nippouChan.application.user.NippouChanUserDetails;
+import jp.co.unirita.nippouChan.domain.comment.Comment;
 import jp.co.unirita.nippouChan.domain.nippou.Nippou;
 import jp.co.unirita.nippouChan.domain.user.User;
 
@@ -24,7 +26,8 @@ import jp.co.unirita.nippouChan.domain.user.User;
 public class NippouController {
     @Autowired
     NippouService nippouService;
-
+    @Autowired
+    CommentService commentService;
     /**
      * (サンプル実装)
      * URLから日報IDを取得し、該当のNippouオブジェクトを取得してビューに渡す。
@@ -36,9 +39,11 @@ public class NippouController {
     public ModelAndView showOne(@PathVariable("id") int nippouId,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
         Nippou nippou = nippouService.getOne(nippouId);
         User user = userDetails.getUser();
+        List<Comment> comment = commentService.getByNippou(nippou);
         ModelAndView mav = new ModelAndView("show_page");
         mav.addObject("nippou", nippou);
         mav.addObject("loginuser",user);
+        mav.addObject("commentlist", comment);
         int flag = 0;
         /*
         System.out.println(nippou.getUser().getUserId());

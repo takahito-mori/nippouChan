@@ -1,6 +1,7 @@
 package jp.co.unirita.nippouChan.application;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,9 @@ public class CommentService {
         comment.setCommentId(1);
         comment.setCommentEdit(new Timestamp(System.currentTimeMillis()));
         commentRepository.save(comment);
+    }
+    public List<Comment> getByNippou(Nippou nippou) {
+    	List<Comment> commentList = commentRepository.findByNippou(nippou);
+    	return commentList;
     }
 }
