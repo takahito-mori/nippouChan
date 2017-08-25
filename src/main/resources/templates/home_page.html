@@ -54,7 +54,7 @@
   	</nav>
 
 	<!-- 新規作成ボタン -->
-		<p class="navbar-right"><a class="raised" href="/nippou">新規作成</a></p><br/>
+		<p class="navbar-right"><a class="raised" href="/nippou">新規作成</a></p><br/><br/>
 
 	<!-- 日報一覧 -->
 	<p class="nippou font-size">日報一覧(最新20件)</p>
@@ -63,6 +63,10 @@
 			<li class="list-group-item" th:each="nippou : ${nippou}"><p th:text="${nippou.nippouTraining} + '　' + ${nippou.User.userName} + '　' + ${nippou.nippouEdit}"></p><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}" th:value="${nippou.nippouTraining}"></a></li>
 		</ul>
 	</div>
+	<a href="/home?next=1">ページ１</a>
+	<a href="/home?next=21">ページ２</a>
+	<a href="/home?next=41">ページ３</a>
+	<a href="/home?next=61">ページ４</a>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
