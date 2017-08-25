@@ -26,20 +26,22 @@
     <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
         <div>
 	        <label for ="user_name">名前</label>
-	        <input type="text" name="user_name" size="39" th:field="${loginuser.userName}" th:value="${loginuser.userName}" readonly="readonly" /><br/>
+	        <input class="name" type="text" name="user_name" size="59" th:field="${loginuser.userName}" th:value="${loginuser.userName}" readonly="readonly" /><br/>
 	        <label for ="user_id">社員ID</label>
-	        <input type="text" name="user_id" size="39" th:field="${loginuser.userId}" th:value="${loginuser.userId}" readonly="readonly" /><br/>
+	        <input class="name" type="text" name="user_id" size="59" th:field="${loginuser.userId}" th:value="${loginuser.userId}" readonly="readonly" /><br/>
 	        <label for ="user_title">タイトル</label>
-	        <input type="text" name="nippou_title" size="39" th:field="*{nippouTitle}" value="testuser"/><br/>
+	        <input class="name" type="text" name="nippou_title" size="59" th:field="*{nippouTitle}" value="testuser"/><br/>
 	        <label for ="user_traning">日付</label>
-	        <input type="text" name="nippou_training" size="39" th:field="*{nippouTraining}" value="2017-10-17"/> 例:XXXX/YY/ZZ <br/>
+	        <input class="name" type="text" name="nippou_training" size="59" th:field="*{nippouTraining}" value="2017-10-17"/> 例:2017/01/01<br/>
 	        <label for ="user_contents">研修内容</label>
-	        <textarea name="nippou_contents" rows="10" cols="40" th:field="*{nippouContents}">testuser</textarea><br/>
+	        <textarea class="name" name="nippou_contents" rows="10" cols="60" th:field="*{nippouContents}">testuser</textarea><br/>
 	        <label for ="user_study">学んだこと</label>
-	        <textarea name="nippou_study" rows="10" cols="40" th:field="*{nippouStudy}">testuser</textarea><br/>
+	        <textarea class="name" name="nippou_study" rows="10" cols="60" th:field="*{nippouStudy}">testuser</textarea><br/>
 	        <label for ="user_problem">困ったこと</label>
-	        <textarea name="nippou_problem" rows="10" cols="40" th:field="*{nippouProblem}">testuser</textarea><br/>
-	        <input type="submit" value="作成" />
+	        <textarea class="name" name="nippou_problem" rows="10" cols="60" th:field="*{nippouProblem}">testuser</textarea><br/>
+	        <div class="post">
+	        	<input type="submit" value="作成" />
+	        </div>
         </div>
     </form>
 </body>

@@ -15,8 +15,18 @@ div {
   	width:700px;
 	margin-right: auto;
 	margin-left : auto;
-	line-height: 2.0em;
 }
+
+.name{
+	margin-bottom: 10px;
+}
+
+.post{
+	width: 400px;
+	text-align: right;
+	margin: auto;
+}
+
 label{
 	margin-right: 10px;
 	width:100px;
