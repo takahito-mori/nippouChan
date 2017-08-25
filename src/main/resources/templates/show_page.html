@@ -41,7 +41,7 @@
     </form>
 	<form th:action="@{/comment}" th:object="${comment}" method="POST">
 		<label for ="comment">コメント</label>
-        <textarea name="nippou_content" rows="10" cols="60" th:field="*{commentContent}"></textarea><br/>
+        <textarea name="comment_content" rows="10" cols="60" th:field="*{commentContent}"></textarea><br/>
         <input type="hidden" name="nippou_id"  th:field="${nippou.nippouId}" th:value="${nippou.nippouId}"/>
 	    <input type="hidden" name="nippou_title" th:field="${nippou.nippouTitle}"/>
 	   	<input type="hidden" name="nippou_regi" th:field="${nippou.nippouRegister}" />
@@ -86,7 +86,7 @@
 
         <form th:action="@{/comment}" th:object="${comment}" method="POST">
 		<label for ="comment">コメント</label>
-        <textarea name="nippou_content" rows="10" cols="60" th:field="*{commentContent}"></textarea><br/>
+        <textarea name="comment_content" rows="10" cols="60" th:field="*{commentContent}"></textarea><br/>
         <input type="hidden" name="nippou_id"  th:field="${nippou.nippouId}" th:value="${nippou.nippouId}"/>
 	    <input type="hidden" name="nippou_title" th:field="${nippou.nippouTitle}"/>
 	   	<input type="hidden" name="nippou_regi" th:field="${nippou.nippouRegister}" />

@@ -86,6 +86,7 @@ public class NippouController {
 
         ModelAndView mav = new ModelAndView("show_page");
         mav.addObject("nippou", newnippou);
+        mav.addObject("comment", new Comment());
         mav.addObject("loginuser",user);
         mav.addObject("flag",1);
 
