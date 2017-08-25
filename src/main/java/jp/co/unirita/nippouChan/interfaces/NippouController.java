@@ -74,13 +74,14 @@ public class NippouController {
     public ModelAndView edit(@Validated Nippou nippou, BindingResult result,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
    // 	System.out.println(nippou.getUser().getUserId());
         nippou.setNippouEdit(new Timestamp(System.currentTimeMillis()));
-        nippouService.edit(nippou);
+        nippou.setUser(userDetails.getUser());
         Nippou newnippou = nippouService.edit(nippou);
         User user = userDetails.getUser();
+
         ModelAndView mav = new ModelAndView("show_page");
         mav.addObject("nippou", newnippou);
-
         mav.addObject("loginuser",user);
+        mav.addObject("flag",1);
 
         return mav;
     }
