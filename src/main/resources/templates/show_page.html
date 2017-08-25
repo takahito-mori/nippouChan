@@ -16,19 +16,19 @@
 	</ul>
 	<div th:unless="${flag}">
     <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
-        タイトル：<input type="text" name="nippou_title" th:value="*{nippouTitle}" readonly = "readonly"/><br/>
-        日付	：<input type="text" name="nippou_training" th:value="*{nippouTraining}" readonly = "readonly"/><br/>
-        名前	：<input type="text" name="user_name" th:value="*{User.userName}" readonly = "readonly"/><br/>
-        社員ID	：<input type="text" name="user_id" th:value="*{User.userId}" readonly = "readonly"/><br/>
+        タイトル：<input type="text" name="nippou_title" th:value="${nippouTitle}" readonly = "readonly"/><br/>
+        日付	：<input type="text" name="nippou_training" th:value="${nippouTraining}" readonly = "readonly"/><br/>
+        名前	：<input type="text" name="user_name" th:value="${loginuser.userName}" readonly = "readonly"/><br/>
+        社員ID	：<input type="text" name="user_id" th:value="${loginuser.userId}" readonly = "readonly"/><br/>
         研修内容<br/>
 
-        <textarea name="nippou_contents" rows="10" cols="40" th:text="*{nippouContents}" readonly = "readonly"></textarea><br/>
-        <!--
+        <textarea name="nippou_contents" rows="10" cols="40" th:text="${nippouContents}" readonly = "readonly"></textarea><br/>
+
         学んだこと
         <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
         困ったこと
         <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
-        -->
+
         <input type="submit" name="update" value="上書き保存" />
     </form>
 	<form>
@@ -37,28 +37,37 @@
         <input type="submit" name="send" value="送信" />
     </form>
     </div>
+
+
     <div th:if="${flag}">
     <form th:action="@{/nippou/update}" th:object="${nippou}" method="POST">
-        タイトル：<input type="text" name="nippou_title" th:value="*{nippouTitle}" th:fieald="*{nippouTitle}"/><br/>
-        日付	：<input type="text" name="nippou_training" th:value="*{nippouTraining}" th:fieald="*{nippouTraining}" readonly = "readonly"/><br/>
-        名前	：<input type="text" name="user_name" th:value="*{User.userName}" th:fieald="*{User.userName}" readonly = "readonly"/><br/>
-        社員ID	：<input type="text" name="user_id" th:value="*{User.userId}" th:fieald="*{User.userId}" readonly = "readonly"/><br/>
+        タイトル：<input type="text" name="nippou_title" th:value="*{nippouTitle}" th:field="*{nippouTitle}"/><br/>
+        日付	：<input type="text" name="nippou_training" th:value="*{nippouTraining}" th:field="*{nippouTraining}" readonly = "readonly"/><br/>
+        名前	：<input type="text" name="user_name" th:value="*{user.userName}" th:field="*{user.userName}" readonly = "readonly"/><br/>
+        社員ID	：<input type="text" name="user_id" th:value="*{user.userId}" th:field="*{user.userId}" readonly = "readonly"/><br/>
         研修内容<br/>
+        <input type="hidden" name="nippou_id" th:value="*{nippouId}" th:field="*{nippouId}"/>
+        <input type="hidden" name="nippou_id" th:value="*{nippouRegister}" th:field="*{nippouRegister}"/>
+        <textarea name="nippou_contents" rows="10" cols="40" th:text="*{nippouContents}" th:field="*{nippouContents}"></textarea><br/>
 
-        <textarea name="nippou_contents" rows="10" cols="40" th:text="*{nippouContents}" th:fieald="*{nippouContents}"></textarea><br/>
-        <!--
         学んだこと
-        <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
+        <input type="hidden" name="nippou_id" th:value="*{nippouId}" th:field="*{nippouId}"/>
+        <input type="hidden" name="nippou_id" th:value="*{nippouRegister}" th:field="*{nippouRegister}"/>
+        <textarea name="nippou_contents" rows="10" cols="40" th:text="*{nippouStudy}" th:field="*{nippouStudy}"></textarea><br/>
         困ったこと
-        <textarea name="nippou_contents" rows="10" cols="40"></textarea><br/>
-        -->
+        <input type="hidden" name="nippou_id" th:value="*{nippouId}" th:field="*{nippouId}"/>
+        <input type="hidden" name="nippou_id" th:value="*{nippouRegister}" th:field="*{nippouRegister}"/>
+        <textarea name="nippou_contents" rows="10" cols="40" th:text="*{nippouProblem}" th:field="*{nippouProblem}"></textarea><br/>
+
         <input type="submit" name="update" value="上書き保存" />
         </form>
         </div>
-<form>
+
+	<form>
         コメント<br/>
         <textarea name="comment_contents" rows="5" cols="40" th:fieald="*{commentContents}"></textarea><br/>
         <input type="submit" name="send" value="送信" />
     </form>
+
 </body>
 </html>

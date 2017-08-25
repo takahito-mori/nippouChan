@@ -1,5 +1,6 @@
 package jp.co.unirita.nippouChan.interfaces;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,19 @@ public class NippouController {
         List<Nippou> report = nippouService.getAll();
         User user = userDetails.getUser();
         ModelAndView mav = new ModelAndView("home_page");
+        mav.addObject("nippou", report);
+        mav.addObject("loginuser",user);
+
+        return mav;
+    }
+    @PostMapping("/update")
+    public ModelAndView edit(@Validated Nippou nippou, BindingResult result,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
+   // 	System.out.println(nippou.getUser().getUserId());
+        nippou.setNippouEdit(new Timestamp(System.currentTimeMillis()));
+        nippouService.edit(nippou);
+        List<Nippou> report = nippouService.getAll();
+        User user = userDetails.getUser();
+        ModelAndView mav = new ModelAndView("show_page");
         mav.addObject("nippou", report);
         mav.addObject("loginuser",user);
 
