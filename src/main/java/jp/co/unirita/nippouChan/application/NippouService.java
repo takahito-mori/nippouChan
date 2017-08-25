@@ -37,12 +37,13 @@ public class NippouService {
         nippouRepository.save(nippou);
     }
 
-    public void edit(Nippou nippou) {
+    public Nippou edit(Nippou nippou) {
         User user = new User();
         nippou.setNippouId(nippou.getNippouId());
         user.setUserId(nippou.getUser().getUserId());
         nippou.setNippouEdit(new Timestamp(System.currentTimeMillis()));
-        nippouRepository.save(nippou);
+        Nippou newnippou = nippouRepository.save(nippou);
+        return newnippou;
 
     }
 
