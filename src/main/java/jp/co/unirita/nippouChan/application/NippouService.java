@@ -52,7 +52,7 @@ public class NippouService {
 	 * @param user
 	 * @return List<Nippou>
 	 */
-/*    public List<Nippou> getListByUserId(User user) {
+    public List<Nippou> getListByUser(User user) {
         return nippouRepository.findByUser(user);
     }
 
