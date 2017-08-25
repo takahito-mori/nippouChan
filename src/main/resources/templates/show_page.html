@@ -39,9 +39,18 @@
         <label for ="user_problem">困ったこと</label>
         <textarea name="nippou_contents" rows="10" cols="60" th:text="*{nippouProblem}" readonly = "readonly"></textarea><br/>
     </form>
-	<form>
-        コメント<br/>
-        <textarea name="comment_contents" rows="5" cols="40" th:fieald="*{commentContents}"></textarea><br/>
+	<form th:action="@{/comment}" th:object="${comment}" method="POST">
+		<label for ="comment">コメント</label>
+        <textarea name="nippou_content" rows="10" cols="60" th:field="*{commentContent}"></textarea><br/>
+        <input type="hidden" name="nippou_id"  th:field="${nippou.nippouId}" th:value="${nippou.nippouId}"/>
+	    <input type="hidden" name="nippou_title" th:field="${nippou.nippouTitle}"/>
+	   	<input type="hidden" name="nippou_regi" th:field="${nippou.nippouRegister}" />
+	    <input type="hidden" name="nippou_edit" th:field="${nippou.nippouEdit}" />
+	    <input type="hidden" name="nippou_training" th:field="${nippou.nippouTraining}"/>
+	    <input type="hidden" name="nippou_contents" th:field="${nippou.nippouContents}" />
+	    <input type="hidden" name="nippou_study" th:field="${nippou.nippouStudy}" />
+	    <input type="hidden" name="nippou_problem" th:field="${nippou.nippouProblem}" />
+	    <input type="hidden" name="nippou_user" th:field="${nippou.User}" />
         <input type="submit" name="send" value="送信" />
     </form>
     </div>
@@ -74,13 +83,22 @@
         	<input type="submit" name="update" value="上書き保存" />
         </div>
         </form>
-        </div>
 
-	<form>
-        コメント<br/>
-        <textarea name="comment_contents" rows="5" cols="40" th:fieald="*{commentContents}"></textarea><br/>
+        <form th:action="@{/comment}" th:object="${comment}" method="POST">
+		<label for ="comment">コメント</label>
+        <textarea name="nippou_content" rows="10" cols="60" th:field="*{commentContent}"></textarea><br/>
+        <input type="hidden" name="nippou_id"  th:field="${nippou.nippouId}" th:value="${nippou.nippouId}"/>
+	    <input type="hidden" name="nippou_title" th:field="${nippou.nippouTitle}"/>
+	   	<input type="hidden" name="nippou_regi" th:field="${nippou.nippouRegister}" />
+	    <input type="hidden" name="nippou_edit" th:field="${nippou.nippouEdit}" />
+	    <input type="hidden" name="nippou_training" th:field="${nippou.nippouTraining}"/>
+	    <input type="hidden" name="nippou_contents" th:field="${nippou.nippouContents}" />
+	    <input type="hidden" name="nippou_study" th:field="${nippou.nippouStudy}" />
+	    <input type="hidden" name="nippou_problem" th:field="${nippou.nippouProblem}" />
+	    <input type="hidden" name="nippou_user" th:field="${nippou.User}" />
         <input type="submit" name="send" value="送信" />
     </form>
+        </div>
 
 </body>
 </html>
