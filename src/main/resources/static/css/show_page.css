@@ -1,61 +1,26 @@
-#list-nav {
-	position: relative;
-	padding: 0;
-	margin: 0;
-	line-height: 1.5;
-	width: auto;
-	height: 77px;
-	background-color: #666;
-	list-style: none;
-	box-shadow: 1px 0 3px 0 #000;
+/*題名*/
+h2{
+	width:600px;
+	background-color: #eee;
 }
 
-#list-nav li {
-	list-style: none;
+div {
+  	width:600px;
+}
+
+/*入力入力欄*/
+label{
+	margin-right: 10px;
+	width:100px;
 	float: left;
 }
 
-.home {
-	padding-top: 20px;
-	padding-left: 20px;
-}
-.home a {
-	text-decoration: none;
-	font-size: 28px;
-	font-weight:bold;
-	color: #fff;
+.name{
+	margin-bottom: 10px;
 }
 
-.user-id {
-	padding-top: 30px;
-	padding-left: 750px;
-}
-.user-id a {
-	text-decoration: none;
-	font-size: 20px;
-	font-weight:bold;
-	color: #fff;
-}
-
-.menu1 {
-	padding-top: 30px;
-    padding-left: 70px;
-}
-.menu1 a {
-	text-decoration: none;
-	font-size: 20px;
-	font-weight:bold;
-	color: #fff;
-}
-
-.menu2 {
-	padding-top: 30px;
-	padding-left: 20px;
+.post{
+	width: 500px;
 	text-align: right;
-}
-.menu2 a {
-	text-decoration: none;
-	font-size: 20px;
-	font-weight:bold;
-	color: #fff;
+	margin: auto;
 }
