@@ -35,4 +35,15 @@ public class HomeController {
         return mav;
     }
 
+    @GetMapping("/mypage")
+    public ModelAndView mypage(Nippou nippou,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
+      User user = userDetails.getUser();
+      List<Nippou> report = nippouService.getListByUser(user);
+    	ModelAndView mav = new ModelAndView("mypage");
+
+        mav.addObject("nippou", report);
+        mav.addObject("loginuser",user);
+        return mav;
+    }
+
 }

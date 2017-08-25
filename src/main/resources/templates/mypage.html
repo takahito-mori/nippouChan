@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>HOME</title>
+    <title>My page</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" />
@@ -24,7 +24,7 @@
   		<div class="container">
   			<!-- 2.ヘッダ情報 -->
   			<div class="navbar-header">
-  				<a class="navbar-brand font-weight font-family-co" href="/home">日報chan</a>
+  				<a class="navbar-brand font-weight font-family-co" href="/home">日報chan mypage</a>
   			</div>
 			<!-- 3.リストの配置 -->
 			<!--
@@ -32,7 +32,7 @@
 			<p class="navbar-text navbar-right"><a href="" class="navbar-link">マイページ</a></p>
 			-->
 			<ul class="nav navbar-nav margin-left-50">
-				<li><a href="/mypage">マイページ</a></li>
+				<li><a href="/mypage"></a></li>
 			</ul>
 
 			<!-- 検索フォーム -->
@@ -57,7 +57,7 @@
 		<p class="navbar-right"><a class="raised" href="/nippou">新規作成</a></p><br/>
 
 	<!-- 日報一覧 -->
-	<p class="nippou font-size">日報一覧(最新20件)</p>
+	<p class="nippou font-size">自分の日報一覧(最新20件)</p>
 	<div>
 		<ul class="list-group">
 			<li class="list-group-item" th:each="nippou : ${nippou}"><p>2017/08/24　橋本智広</p><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}" th:value="${nippou.nippouTraining}"></a></li>
