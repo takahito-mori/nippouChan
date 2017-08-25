@@ -79,6 +79,7 @@ public class NippouController {
         User user = userDetails.getUser();
         ModelAndView mav = new ModelAndView("show_page");
         mav.addObject("nippou", newnippou);
+
         mav.addObject("loginuser",user);
 
         return mav;

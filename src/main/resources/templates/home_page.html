@@ -31,7 +31,7 @@
 			<form method="POST" id="logout" name="logout"><a class="navbar-link navbar-text navbar-right" th:href="@{/logout}">ログアウト</a></form>
 			<p class="navbar-text navbar-right"><a href="" class="navbar-link">マイページ</a></p>
 			-->
-			<ul class="nav navbar-nav margin-left-50">
+			<ul class="nav navbar-nav margin-left-50 font-family-co font-weight">
 				<li><a href="/mypage">マイページ</a></li>
 			</ul>
 
@@ -60,7 +60,7 @@
 	<p class="nippou font-size">日報一覧(最新20件)</p>
 	<div>
 		<ul class="list-group">
-			<li class="list-group-item" th:each="nippou : ${nippou}"><p>2017/08/24　橋本智広</p><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}" th:value="${nippou.nippouTraining}"></a></li>
+			<li class="list-group-item" th:each="nippou : ${nippou}"><p th:text="${nippou.nippouTraining} + '　' + ${nippou.User.userName} + '　' + ${nippou.nippouEdit}"></p><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}" th:value="${nippou.nippouTraining}"></a></li>
 		</ul>
 	</div>
 
