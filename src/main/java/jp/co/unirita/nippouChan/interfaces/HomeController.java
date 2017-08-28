@@ -10,14 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import jp.co.unirita.nippouChan.application.AdminService;
 import jp.co.unirita.nippouChan.application.NippouService;
 import jp.co.unirita.nippouChan.application.user.NippouChanUserDetails;
 import jp.co.unirita.nippouChan.domain.nippou.Nippou;
 import jp.co.unirita.nippouChan.domain.user.User;
+
 @Controller
 public class HomeController {
+
     @Autowired
     NippouService nippouService;
+	@Autowired
+	AdminService adminService;
 
     /**
      * (サンプル実装)
@@ -27,18 +32,29 @@ public class HomeController {
 
     @GetMapping("/home")
     public ModelAndView home(@RequestParam("pageno") Integer pageno, Nippou nippou,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
-      Page<Nippou> page = nippouService.getPage(pageno);
-      List<Nippou> report = page.getContent();
-      Integer totalPages = page.getTotalPages();
-      User user = userDetails.getUser();
+    	User user = userDetails.getUser();
+    	if (user.getUserFlag() == true) {
+			List<User> users = adminService.getAll();
+		//	List<User> users = adminService.getOne(user.getUserId());
+			ModelAndView mav = new ModelAndView("adminhome_page");
+			mav.addObject("allusers", users);
+			mav.addObject("loginuser", user);
+			return mav;
+		} else {
+			Page<Nippou> page = nippouService.getPage(pageno);
+		      List<Nippou> report = page.getContent();
+		      Integer totalPages = page.getTotalPages();
 
-      ModelAndView mav = new ModelAndView("home_page");
 
-      mav.addObject("nippouPage", totalPages);
-      mav.addObject("nippou", report);
-      mav.addObject("loginuser",user);
+		      ModelAndView mav = new ModelAndView("home_page");
 
-      return mav;
+		      mav.addObject("nippouPage", totalPages);
+		      mav.addObject("nippou", report);
+		      mav.addObject("loginuser",user);
+
+			return mav;
+		}
+
     }
 
     @GetMapping("/mypage")
@@ -51,5 +67,7 @@ public class HomeController {
         mav.addObject("loginuser",user);
         return mav;
     }
+
+
 
 }

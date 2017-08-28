@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="UTF-8" />
+	<link href="/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/css/write_page.css" rel="stylesheet" />
+	<link href="/css/home_page.css" rel="stylesheet" />
+</head>
+<body>
+	<!-- 1.ナビゲーションバーの設定 -->
+  	<nav class="navbar navbar-default navbar-fixed-top">
+  		<div class="container">
+  			<!-- 2.ヘッダ情報 -->
+  			<div class="navbar-header">
+  				<a class="navbar-brand font-weight font-family-co" href="/home">日報chan</a>
+  			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="/home">キャンセル</a></li>
+			</ul>
+  		</div>
+  	</nav>
+
+<h2>ユーザー新規入力</h2>
+    <form th:action="@{/user}" th:object="${user}" method="POST">
+        <div>
+	        <label for ="user_name">名前</label>
+	        <input class="name" type="text" name="user_name" size="59" th:field="*{userName}" /><br/>
+	        <label for ="user_kana">フリガナ</label>
+	        <input class="name" type="text" name="user_kana" size="59" th:field="*{userKana}" /><br/>
+	        <label for ="user_id">社員ID</label>
+	        <input class="name" type="text" name="user_id" size="59" th:field="*{userId}" /><br/>
+	        <label for ="user_mail">メールアドレス</label>
+	        <input class="name" type="text" name="user_mail" size="59" th:field="*{userMail}" /><br/>
+	        <label for ="user_password">パスワード</label>
+	        <input class="name" type="text" name="user_password" size="59" th:field="*{userPassword}" /><br/>
+
+	        <div class="post">
+	        	<input type="submit" value="登録" />
+	        </div>
+        </div>
+    </form>
+</body>
+</html>

@@ -40,6 +40,9 @@ public class User implements Serializable {
 	@Column(name="user_password")
 	private String userPassword;
 
+	@Column(name="user_flag")
+	private boolean userFlag;
+
 	//bi-directional many-to-one association to Comment
 	@OneToMany(mappedBy="user")
 	private List<Comment> comments;
@@ -79,10 +82,16 @@ public class User implements Serializable {
 		return this.userName;
 	}
 
+	public void setUserFlag(boolean userFlag) {
+		this.userFlag = userFlag ;
+	}
+	public boolean getUserFlag() {
+		return this.userFlag;
+	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
 	public String getUserPassword() {
 		return this.userPassword;
 	}
