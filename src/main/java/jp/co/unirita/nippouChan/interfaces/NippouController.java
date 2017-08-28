@@ -84,7 +84,7 @@ public class NippouController {
         Nippou newnippou = nippouService.edit(nippou);
         User user = userDetails.getUser();
 
-        ModelAndView mav = new ModelAndView("show_page");
+        ModelAndView mav = new ModelAndView("show_update_page");
         mav.addObject("nippou", newnippou);
         mav.addObject("comment", new Comment());
         mav.addObject("loginuser",user);

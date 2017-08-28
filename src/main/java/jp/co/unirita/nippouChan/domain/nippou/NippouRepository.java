@@ -11,6 +11,8 @@ import jp.co.unirita.nippouChan.domain.user.User;
 public interface NippouRepository extends CrudRepository<Nippou, Integer> {
     List<Nippou> findByNippouId(int nippouId);
     List<Nippou> findByUser(User user);
+    List<Nippou> findByNippouTitle(String nippouTitle);
+
     List<Nippou> findAll();
 }
 

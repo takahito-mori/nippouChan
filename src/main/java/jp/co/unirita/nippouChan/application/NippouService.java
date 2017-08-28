@@ -94,6 +94,8 @@ public class NippouService {
     	return nippouList;
     }
 
+
+
     /**
      * nippouIdをキーにしてDBから日報を取得し、研修日時の降順(最新)でソートして返す
      * @param nippouId
