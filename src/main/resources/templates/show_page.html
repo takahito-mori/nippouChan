@@ -18,6 +18,18 @@
 </head>
 
 <body>
+<script>
+function Click_Sub() {
+	if (document.all.moji1.style.display == "none") {
+		document.all.moji2.style.display = "none"
+		document.all.moji1.style.display = "block"
+	} else {
+		document.all.moji1.style.display = "none"
+		document.all.moji2.style.display = "block"
+	}
+}
+</script>
+
 	<!-- 1.ナビゲーションバーの設定 -->
   	<nav class="navbar navbar-default navbar-fixed-top">
   		<div class="container">
@@ -30,9 +42,13 @@
 			</ul>
   		</div>
   	</nav>
+<div class="container">
+<div class="col-xs-7" style="border:dotted 1px #000;height:1200px;">
   	<h2>日報閲覧</h2>
 
+
   	<p id="update_contents"></p>
+
 
 
 	<div th:unless="${flag}">
@@ -53,20 +69,6 @@
         <textarea name="nippou_contents" rows="10" cols="60" th:text="*{nippouStudy}" readonly = "readonly"></textarea><br/>
         <label for ="user_problem">困ったこと</label>
         <textarea name="nippou_contents" rows="10" cols="60" th:text="*{nippouProblem}" readonly = "readonly"></textarea><br/>
-    </form>
-	<form th:action="@{/comment}" th:object="${comment}" method="POST">
-		<label for ="comment">コメント</label>
-        <textarea name="comment_content" rows="10" cols="60" th:field="*{commentContent}"></textarea><br/>
-        <input type="hidden" name="nippou_id"  th:field="${nippou.nippouId}" th:value="${nippou.nippouId}"/>
-	    <input type="hidden" name="nippou_title" th:field="${nippou.nippouTitle}"/>
-	   	<input type="hidden" name="nippou_regi" th:field="${nippou.nippouRegister}" />
-	    <input type="hidden" name="nippou_edit" th:field="${nippou.nippouEdit}" />
-	    <input type="hidden" name="nippou_training" th:field="${nippou.nippouTraining}"/>
-	    <input type="hidden" name="nippou_contents" th:field="${nippou.nippouContents}" />
-	    <input type="hidden" name="nippou_study" th:field="${nippou.nippouStudy}" />
-	    <input type="hidden" name="nippou_problem" th:field="${nippou.nippouProblem}" />
-	    <input type="hidden" name="nippou_user" th:field="${nippou.User}" />
-        <input type="submit" name="send" value="送信" />
     </form>
     </div>
 
@@ -96,14 +98,17 @@
         <label for ="user_problem">困ったこと</label>
         <input class="name" type="hidden" name="nippou_id" th:value="*{nippouId}" th:field="*{nippouId}"/>
         <input class="name" type="hidden" name="nippou_id" th:value="*{nippouRegister}" th:field="*{nippouRegister}"/>
-        <textarea class="name" name="nippou_contents" rows="10" cols="60" th:text="*{nippouProblem}" th:field="*{nippouProblem}"></textarea><br/>
+        <textarea class="name" name="nippou_contents" rows="10" cols="60" th:text="*{nippouProblem}" th:field="*{nippouProblem}"></textarea>
 
         <div class="post">
-        	<input type="submit" name="update" value="上書き保存" />
+        	<input type="submit" name="update" value="上書き保存" /><br/><br/>
         </div>
         </form>
-
-        <form th:action="@{/comment}" th:object="${comment}" method="POST">
+    </div>
+ </div>
+ <div class="col-xs-5" style="border:dotted 1px #000;height:1200px; overflow:scroll; overflow-x: hidden;">
+ <h2>コメント一覧(全何件)</h2>
+        <form th:action="@{/comment}" th:object="${newcomment}" method="POST">
 		<label for ="comment">コメント</label>
         <textarea name="comment_content" rows="10" cols="60" th:field="*{commentContent}"></textarea><br/>
         <input type="hidden" name="nippou_id"  th:field="${nippou.nippouId}" th:value="${nippou.nippouId}"/>
@@ -117,7 +122,13 @@
 	    <input type="hidden" name="nippou_user" th:field="${nippou.User}" />
         <input type="submit" name="send" value="送信" />
     </form>
-        </div>
+    <ul class="list-group">
+		<li class="comment_list" th:each="comments : ${comments}">
+			<p th:text="${comments.commentContent} + ' ' + ${comments.User.userName} + ' ' + ${comments.commentRegister}"></p>
+		</li>
+	</ul>
+ </div>
+ </div>
 
 </body>
 </html>
