@@ -30,27 +30,28 @@ public class HomeController {
      * @return
      */
 
-    @GetMapping("/home")
-    public ModelAndView home(@RequestParam("pageno") Integer pageno, Nippou nippou,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
-    	User user = userDetails.getUser();
-    	if (user.getUserFlag() == true) {
+	@GetMapping("/home")
+	public ModelAndView home(@RequestParam("pageno") Integer pageno, Nippou nippou,
+			@AuthenticationPrincipal NippouChanUserDetails userDetails) {
+
+		User user = userDetails.getUser();
+		if (user.getUserFlag() == true) {
 			List<User> users = adminService.getAll();
-		//	List<User> users = adminService.getOne(user.getUserId());
+			// List<User> users = adminService.getOne(user.getUserId());
 			ModelAndView mav = new ModelAndView("adminhome_page");
 			mav.addObject("allusers", users);
 			mav.addObject("loginuser", user);
 			return mav;
 		} else {
 			Page<Nippou> page = nippouService.getPage(pageno);
-		      List<Nippou> report = page.getContent();
-		      Integer totalPages = page.getTotalPages();
+			List<Nippou> report = page.getContent();
+			Integer totalPages = page.getTotalPages();
 
+			ModelAndView mav = new ModelAndView("home_page");
 
-		      ModelAndView mav = new ModelAndView("home_page");
-
-		      mav.addObject("nippouPage", totalPages);
-		      mav.addObject("nippou", report);
-		      mav.addObject("loginuser",user);
+			mav.addObject("nippouPage", totalPages);
+			mav.addObject("nippou", report);
+			mav.addObject("loginuser", user);
 
 			return mav;
 		}

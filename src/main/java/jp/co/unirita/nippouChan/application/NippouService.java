@@ -41,7 +41,7 @@ public class NippouService {
         return newnippou;
 
     }
-
+    //pageno ページ目から20個を取得
     public Page<Nippou> getPage(int pageno){
     	return nippouRepository.findAll(new PageRequest(pageno, 20));
     }
