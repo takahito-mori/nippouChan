@@ -11,5 +11,5 @@ import jp.co.unirita.nippouChan.domain.nippou.Nippou;
 public interface CommentRepository extends CrudRepository<Comment, Integer> {
 	List<Comment> findByNippou(Nippou nippou);
 	//void save(Comment comment);
-
+    List<Comment> findAll();
 }

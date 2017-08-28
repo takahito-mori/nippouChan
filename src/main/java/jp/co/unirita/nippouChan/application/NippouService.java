@@ -25,15 +25,8 @@ public class NippouService {
      */
 
     public void create(Nippou nippou) {
-
-//        User user = new User();
-//        user.setUserId("00001");
-//      nippou.setUser(user); // TODO: 現在のログインユーザを取得して設定するようにしたい
-//		現段階では手入力しているため、上は必要ない？？
     	nippou.setNippouRegister(new Timestamp(System.currentTimeMillis()));
         nippou.setNippouEdit(new Timestamp(System.currentTimeMillis()));
-//		nippou.setNippouId(getListSize()+1); //       nippou.setNippouId(nippou);
-//        nippou.setCreated(new Date());
         nippouRepository.save(nippou);
     }
 

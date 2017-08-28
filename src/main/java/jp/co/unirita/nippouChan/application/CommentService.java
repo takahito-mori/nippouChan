@@ -1,12 +1,14 @@
 package jp.co.unirita.nippouChan.application;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jp.co.unirita.nippouChan.domain.comment.Comment;
 import jp.co.unirita.nippouChan.domain.comment.CommentRepository;
+import jp.co.unirita.nippouChan.domain.nippou.Nippou;
 import jp.co.unirita.nippouChan.domain.user.User;
 
 
@@ -46,10 +48,10 @@ public class CommentService {
 	 * @param user
 	 * @return List<Comment>
 	 */
-/*    public List<Comment> getListByUser(User user) {
-        return commentRepository.findByUser(user);
+    public List<Comment> getByNippou(Nippou nippou) {
+        return commentRepository.findByNippou(nippou);
     }
-*/
+
     /**
      * (サンプル実装)
      * commentIdをキーにしてDBから日報を取得して返す
@@ -57,7 +59,7 @@ public class CommentService {
      * @return Comment
      */
 
-  /*  public Comment getOne(int commentId) {
+    public Comment getOne(int commentId) {
         return commentRepository.findOne(commentId);
     }
 
@@ -65,7 +67,7 @@ public class CommentService {
     public List<Comment> getAll() {
 		return commentRepository.findAll();
 	}
-*/
+
 //annotetionで自動ID割り振り実装しているため使う機会はないだろう
 /*    public int getListSize() {
 		List<Comment> list=getAll();

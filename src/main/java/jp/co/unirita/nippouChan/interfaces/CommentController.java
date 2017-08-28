@@ -1,5 +1,7 @@
 package jp.co.unirita.nippouChan.interfaces;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -36,11 +38,15 @@ public class CommentController {
         comment.setNippou(nippou);
     	commentService.create(comment);
         ModelAndView mav = new ModelAndView("show_page");
+        List<Comment> comments=commentService.getByNippou(nippou);
         mav.addObject("loginuser",user);
-        mav.addObject("comment", comment);
+        mav.addObject("comments", comments);
+        mav.addObject("newcomment", new Comment());
         return mav;
 
     }
+
+
 
 
 }

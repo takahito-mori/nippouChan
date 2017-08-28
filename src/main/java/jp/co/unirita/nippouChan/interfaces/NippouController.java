@@ -39,12 +39,12 @@ public class NippouController {
     public ModelAndView showOne(@PathVariable("id") int nippouId,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
         Nippou nippou = nippouService.getOne(nippouId);
         User user = userDetails.getUser();
- //       List<Comment> comment = commentService.getByNippou(nippou);
+        List<Comment> comments=commentService.getByNippou(nippou);
         ModelAndView mav = new ModelAndView("show_page");
         mav.addObject("nippou", nippou);
-        mav.addObject("comment",new Comment());
+        mav.addObject("comments",comments);
+        mav.addObject("newcomment",new Comment());
         mav.addObject("loginuser",user);
-//        mav.addObject("commentlist", comment);
         int flag = 0;
         /*
         System.out.println(nippou.getUser().getUserId());
