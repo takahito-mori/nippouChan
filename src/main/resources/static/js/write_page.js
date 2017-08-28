@@ -1,7 +1,7 @@
 $(function(){
 	//alert('A');
 	//作成ボタンを押したとき
-	$(".form").submit(function(){
+	$("form").submit(function(){
 		var isErr = false;
 
 		//タイトルが未入力の場合

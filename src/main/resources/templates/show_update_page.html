@@ -34,15 +34,14 @@
 
 	<p id="update_contents">保存しました</p>
 
-	<p id="err_title"></p>
-	<p id="err_date"></p>
-
 	<div th:unless="${flag}">
     <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
         <label for ="user_title">タイトル</label>
         <input class="name" type="text" name="nippou_title" size="59" th:value="*{nippouTitle}" readonly = "readonly"/><br/>
+        <p id="err_title" class="err_line"></p>
         <label for ="user_traning">日付</label>
         <input class="name" type="text" name="nippou_training" size="59" th:value="*{nippouTraining}" readonly = "readonly"/><br/>
+        <p id="err_date" class="err_line"></p>
         <label for ="user_name">名前</label>
         <input class="name" type="text" name="user_name" size="59" th:value="*{User.userName}" readonly = "readonly"/><br/>
         <label for ="user_id">社員ID</label>

@@ -8,7 +8,7 @@ $(function(){
 		if($("input[name='nippouTitle']").val() == ''){
 			$('#update_contents').text('');
 			$('#err_title').text('タイトルを入力してください');
-			
+
 			isErr = true;
 		} else{
 			$('#err_title').text('');
@@ -19,10 +19,12 @@ $(function(){
 		//var datetime_parse = strDate.replace(\/\g, '-');
 
 		if(strDate == ''){
+			$('#update_contents').text('');
 			$('#err_date').text('日付を入力してください');
 			isErr = true;
 		} else{
 			if(checkDate(strDate) == false){
+				$('#update_contents').text('');
 				$('#err_date').text('日付の形式を確認してください');
 				isErr = true;
 			} else{
@@ -36,8 +38,6 @@ $(function(){
 
 
 		$("form").submit();
-		$('#update_contents').text('保存しました');
-		$('body').animate({scrollTop: 0}, 'fast');
 	});
 });
 

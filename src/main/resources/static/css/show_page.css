@@ -24,3 +24,17 @@ label{
 	text-align: right;
 	margin: auto;
 }
+
+#err_title, #err_date {
+	color: red;
+	margin-bottom: 10px;
+	margin-left: 110px;
+}
+
+.err_line {
+	margin: 0;
+}
+
+#update_contents {
+	color: blue;
+}

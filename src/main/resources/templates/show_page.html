@@ -33,14 +33,15 @@
   	<h2>日報閲覧</h2>
 
   	<p id="update_contents"></p>
-	<p id="err_title"></p>
-	<p id="err_date"></p>
+
 
 	<div th:unless="${flag}">
     <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
         <label for ="user_title">タイトル</label>
         <input class="name" type="text" name="nippou_title" size="59" th:value="*{nippouTitle}" readonly = "readonly"/><br/>
+        <p id="err_title" class="err_line"></p>
         <label for ="user_traning">日付</label>
+        <p id="err_date" class="err_line"></p>
         <input class="name" type="text" name="nippou_training" size="59" th:value="*{nippouTraining}" readonly = "readonly"/><br/>
         <label for ="user_name">名前</label>
         <input class="name" type="text" name="user_name" size="59" th:value="*{User.userName}" readonly = "readonly"/><br/>
@@ -72,9 +73,13 @@
     <div th:if="${flag}">
     <form id="update" th:action="@{/nippou/update}" th:object="${nippou}" method="POST">
         <label for ="user_title">タイトル</label>
-        <input class="name" type="text" name="nippou_title" size="59" th:value="*{nippouTitle}" th:field="*{nippouTitle}"/><br/>
+        <input type="text" name="nippou_title" size="59" th:value="*{nippouTitle}" th:field="*{nippouTitle}"/><br/>
+        <p id="err_title" class="err_line"></p>
+
         <label for ="user_traning">日付</label>
-        <input class="name" type="text" name="nippou_training" size="59" th:value="*{nippouTraining}" th:field="*{nippouTraining}"/><br/>
+        <input type="text" name="nippou_training" size="59" th:value="*{nippouTraining}" th:field="*{nippouTraining}"/><br/>
+	    <p id="err_date" class="err_line"></p>
+
         <label for ="user_name">名前</label>
         <input class="name" type="text" name="user_name" size="59" th:value="*{user.userName}" th:field="*{user.userName}" readonly = "readonly"/><br/>
         <label for ="user_id">社員ID</label>
