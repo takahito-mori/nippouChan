@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import jp.co.unirita.nippouChan.domain.nippou.CreateComparator;
@@ -38,6 +40,10 @@ public class NippouService {
         Nippou newnippou = nippouRepository.save(nippou);
         return newnippou;
 
+    }
+
+    public Page<Nippou> getPage(int pageno){
+    	return nippouRepository.findAll(new PageRequest(pageno, 20));
     }
 
 	/**

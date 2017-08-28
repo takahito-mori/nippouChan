@@ -3,9 +3,11 @@ package jp.co.unirita.nippouChan.interfaces;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.unirita.nippouChan.application.NippouService;
@@ -24,15 +26,19 @@ public class HomeController {
      */
 
     @GetMapping("/home")
-    public ModelAndView home(Nippou nippou,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
-      List<Nippou> report = nippouService.getAll();
+    public ModelAndView home(@RequestParam("pageno") Integer pageno, Nippou nippou,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
+      Page<Nippou> page = nippouService.getPage(pageno);
+      List<Nippou> report = page.getContent();
+      Integer totalPages = page.getTotalPages();
       User user = userDetails.getUser();
 
-    	        ModelAndView mav = new ModelAndView("home_page");
+      ModelAndView mav = new ModelAndView("home_page");
 
-        mav.addObject("nippou", report);
-        mav.addObject("loginuser",user);
-        return mav;
+      mav.addObject("nippouPage", totalPages);
+      mav.addObject("nippou", report);
+      mav.addObject("loginuser",user);
+
+      return mav;
     }
 
     @GetMapping("/mypage")
