@@ -1,7 +1,10 @@
 package jp.co.unirita.nippouChan.domain.nippou;
 
+
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +15,7 @@ public interface NippouRepository extends CrudRepository<Nippou, Integer> {
     List<Nippou> findByNippouId(int nippouId);
     List<Nippou> findByUser(User user);
     List<Nippou> findByNippouTitle(String nippouTitle);
-
     List<Nippou> findAll();
+    Page<Nippou> findAll(Pageable pageable);
 }
 

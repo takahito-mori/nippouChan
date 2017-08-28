@@ -30,7 +30,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/js/**", "/css/**").permitAll().antMatchers("/**").authenticated().and()
 				.formLogin().loginPage("/login_page").loginProcessingUrl("/login").usernameParameter("userId")
-				.passwordParameter("userPassword").defaultSuccessUrl("/home", true).failureUrl("/login_page?error=true")
+				.passwordParameter("userPassword").defaultSuccessUrl("/home?pageno=0", true).failureUrl("/login_page?error=true")
 				.permitAll().and()
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
