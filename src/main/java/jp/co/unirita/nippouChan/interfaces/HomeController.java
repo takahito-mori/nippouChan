@@ -28,10 +28,9 @@ public class HomeController {
     @GetMapping("/home")
     public ModelAndView home(@RequestParam("pageno") Integer pageno, Nippou nippou,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
       Page<Nippou> page = nippouService.getPage(pageno);
-      List<Nippou> report = page.getContent();
-      Integer totalPages = page.getTotalPages(); //addObject
+      List<Nippou> report = page.getContent(); //取得した要素をListで取得
+      Integer totalPages = page.getTotalPages(); //ページ数を取得
       User user = userDetails.getUser();
-
 
       ModelAndView mav = new ModelAndView("home_page");
 
