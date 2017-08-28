@@ -83,10 +83,13 @@ public class NippouController {
         nippou.setUser(userDetails.getUser());
         Nippou newnippou = nippouService.edit(nippou);
         User user = userDetails.getUser();
+        List<Comment> comments=commentService.getByNippou(nippou);
+
 
         ModelAndView mav = new ModelAndView("show_update_page");
+        mav.addObject("comments",comments);
         mav.addObject("nippou", newnippou);
-        mav.addObject("comment", new Comment());
+        mav.addObject("newcomment",new Comment());
         mav.addObject("loginuser",user);
         mav.addObject("flag",1);
 

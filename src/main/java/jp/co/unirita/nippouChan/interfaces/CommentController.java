@@ -39,6 +39,13 @@ public class CommentController {
     	commentService.create(comment);
         ModelAndView mav = new ModelAndView("show_page");
         List<Comment> comments=commentService.getByNippou(nippou);
+
+        int flag = 0;
+        if(user.getUserId().toString().equals(nippou.getUser().getUserId().toString())) {
+        	flag = 1;
+        }
+
+        mav.addObject("flag",flag);
         mav.addObject("loginuser",user);
         mav.addObject("comments", comments);
         mav.addObject("newcomment", new Comment());

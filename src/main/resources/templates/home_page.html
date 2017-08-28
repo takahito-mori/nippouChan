@@ -60,7 +60,7 @@
 	<p class="nippou font-size">日報一覧(最新20件)</p>
 	<div>
 		<ul class="list-group">
-			<li class="list-group-item" th:each="nippou : ${nippou}"><p th:text="${nippou.nippouTraining} + '　' + ${nippou.User.userName} + '　' + ${nippou.nippouEdit}"></p><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}" th:value="${nippou.nippouTraining}"></a></li>
+			<li class="list-group-item" th:each="nippou : ${nippou}"><p th:text="${#dates.format(nippou.nippouTraining,'yyyy-MM-dd')} + '　' + ${nippou.User.userName} + '　' + ${nippou.nippouEdit}"></p><a th:href="@{'/nippou/' + ${nippou.nippouId}}" th:text="${nippou.nippouTitle}" th:value="${nippou.nippouTraining}"></a></li>
 		</ul>
 	</div>
 	<a href="/home?next=1">ページ１</a>
