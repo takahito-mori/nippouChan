@@ -42,6 +42,10 @@ public class AdminController {
 	@PostMapping
 	public ModelAndView create(@Validated User user, BindingResult result,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
 		User loginuser = userDetails.getUser();
+		if (loginuser.getUserFlag() == false) {
+			ModelAndView mav = new ModelAndView("redirect:/home?pageno=0");
+			return mav;
+		}
 		user.setUserPassword(passwordEncoder.encode(user.getUserPassword()));
 		adminService.create(user);
 		ModelAndView mav = new ModelAndView("adminhome_page");
@@ -54,6 +58,11 @@ public class AdminController {
 	@GetMapping
 	public ModelAndView write(@Validated Nippou nippou, BindingResult result,
 			@AuthenticationPrincipal NippouChanUserDetails userDetails) {
+		User loginuser = userDetails.getUser();
+		if (loginuser.getUserFlag() == false) {
+			ModelAndView mav = new ModelAndView("redirect:/home?pageno=0");
+			return mav;
+		}
 		ModelAndView mav = new ModelAndView("adminwrite_page");
 		mav.addObject("user",new User());
 		return mav;
