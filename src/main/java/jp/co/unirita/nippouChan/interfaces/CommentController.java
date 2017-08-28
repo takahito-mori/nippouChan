@@ -53,7 +53,19 @@ public class CommentController {
         return mav;
 
     }
+    @PostMapping("/edit/{id}")
+    public ModelAndView edit(@Validated Comment comment, @Validated Comment comments, @Validated Nippou nippou,BindingResult result,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
+        User user = userDetails.getUser();
+    	commentService.create(comment);
+        ModelAndView mav = new ModelAndView("show_page");
+        List<Comment> comments2=commentService.getByNippou(nippou);
+        mav.addObject("loginuser",user);
+        mav.addObject("comments", comments2);
+        mav.addObject("commentnum", comments2.size());
+        mav.addObject("newcomment", new Comment());
+        return mav;
 
+    }
 
 
 
