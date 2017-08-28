@@ -11,6 +11,12 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/home_page.css" rel="stylesheet" />
 
+	<script type="text/javascript"
+     src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script type="text/javascript" src="../js/home_page.js"></script>
+
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -24,7 +30,7 @@
   		<div class="container">
   			<!-- 2.ヘッダ情報 -->
   			<div class="navbar-header">
-  				<a class="navbar-brand font-weight font-family-co" href="/home">日報chan</a>
+  				<a class="navbar-brand font-weight font-family-co" href="/home?pageno=0">日報chan</a>
   			</div>
 			<!-- 3.リストの配置 -->
 			<!--
@@ -64,15 +70,33 @@
 		</ul>
 	</div>
 
-
+<!--
 	<div>
-  		<a th:each="i : ${#numbers.sequence(0, nippouPage-1)}" th:value="${i}" th:text="'ページ' + ${i+1}" th:href="'/home?pageno=' + ${i}"></a>
+  		<a th:each="i : ${#numbers.sequence(0, nippouPage-1)}" th:text="${i+1}" th:href="'/home?pageno=' + ${i}"></a>
 	</div>
+-->
 
+	<nav>
+	<ul class="pagination">
+		<li class="disabled">
+			<a href="#" aria-label="前のページへ">
+				<span aria-hidden="true">«</span>
+			</a>
+		</li>
+		<li>
+			<a th:each="i : ${#numbers.sequence(0, nippouPage-1)}" th:text="${i+1}" th:href="'/home?pageno=' + ${i}"></a>
+		</li>
+		<li>
+			<a href="" aria-label="次のページへ">
+				<span aria-hidden="true">»</span>
+			</a>
+		</li>
+	</ul>
+</nav>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+<!--
     <script src="js/bootstrap.min.js"></script>
+-->
   </body>
 </html>

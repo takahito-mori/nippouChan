@@ -44,11 +44,10 @@ public class HomeController {
 			return mav;
 		} else {
 			Page<Nippou> page = nippouService.getPage(pageno);
-			List<Nippou> report = page.getContent();
-			Integer totalPages = page.getTotalPages();
+			List<Nippou> report = page.getContent(); //取得した要素をListで取得
+			Integer totalPages = page.getTotalPages(); //ページ数を取得
 
 			ModelAndView mav = new ModelAndView("home_page");
-
 			mav.addObject("nippouPage", totalPages);
 			mav.addObject("nippou", report);
 			mav.addObject("loginuser", user);
