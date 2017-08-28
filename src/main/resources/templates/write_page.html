@@ -1,15 +1,33 @@
 <!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>新規入力画面</title>
 
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+    <!-- Bootstrap -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/home_page.css" rel="stylesheet" />
+    <link href="../css/write_page.css" rel="stylesheet" />
 
-<head>
-	<meta charset="UTF-8" />
-	<link href="/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="/css/write_page.css" rel="stylesheet" />
-	<link href="/css/home_page.css" rel="stylesheet" />
-</head>
-<body>
-	<!-- 1.ナビゲーションバーの設定 -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript"
+     src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script type="text/javascript" src="../js/write_page.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+  	<!-- 1.ナビゲーションバーの設定 -->
   	<nav class="navbar navbar-default navbar-fixed-top">
   		<div class="container">
   			<!-- 2.ヘッダ情報 -->
@@ -22,27 +40,99 @@
   		</div>
   	</nav>
 
-<h2>日報新規入力</h2>
+
+
+	<h2>日報新規入力</h2>
+
     <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
-        <div>
-	        <label for ="user_name">名前</label>
-	        <input class="name" type="text" name="user_name" size="59" th:field="${loginuser.userName}" th:value="${loginuser.userName}" readonly="readonly" /><br/>
-	        <label for ="user_id">社員ID</label>
-	        <input class="name" type="text" name="user_id" size="59" th:field="${loginuser.userId}" th:value="${loginuser.userId}" readonly="readonly" /><br/>
-	        <label for ="user_title">タイトル</label>
-	        <input class="name" type="text" name="nippou_title" size="59" th:field="*{nippouTitle}" value="testuser"/><br/>
-	        <label for ="user_traning">日付</label>
-	        <input class="name" type="text" name="nippou_training" size="59" th:field="*{nippouTraining}" value="2017-10-17"/> 例:2017/01/01<br/>
-	        <label for ="user_contents">研修内容</label>
-	        <textarea class="name" name="nippou_contents" rows="10" cols="60" th:field="*{nippouContents}">testuser</textarea><br/>
-	        <label for ="user_study">学んだこと</label>
-	        <textarea class="name" name="nippou_study" rows="10" cols="60" th:field="*{nippouStudy}">testuser</textarea><br/>
-	        <label for ="user_problem">困ったこと</label>
-	        <textarea class="name" name="nippou_problem" rows="10" cols="60" th:field="*{nippouProblem}">testuser</textarea><br/>
-	        <div class="post">
-	        	<input type="submit" value="作成" />
-	        </div>
-        </div>
+    	<div>
+    		<table>
+		  		<tbody><tr>
+		  			<td>
+		  				<label for ="user_name">名前</label>
+		  			</td>
+		  			<td>
+		  				<input class="name" type="text" name="user_name" size="59" th:field="${loginuser.userName}" th:value="${loginuser.userName}" readonly="readonly" />
+		  			</td>
+		  		</tr>
+		  		<tr>
+		  			<td>
+		  				<label for ="user_id">社員ID</label>
+		  			</td>
+		  			<td>
+		  				<input class="name" type="text" name="user_id" size="59" th:field="${loginuser.userId}" th:value="${loginuser.userId}" readonly="readonly" />
+		  			</td>
+		  		</tr>
+		  		<tr>
+		  			<td>
+		  				<label for ="user_title">タイトル</label>
+		  			</td>
+		  			<td>
+		  				<input type="text" name="nippou_title" size="59" th:field="*{nippouTitle}"/>
+		  			</td>
+		  		</tr>
+		  		<tr>
+		  			<td></td>
+		  			<td>
+		  				<p class="err_line" id="err_title"></p>
+		  			</td>
+		  		</tr>
+		  		<tr>
+		  			<td>
+		  				<label for ="user_traning">日付</label>
+		  			</td>
+		  			<td>
+		  				<input type="text" id="date" name="nippou_training" size="59" th:field="*{nippouTraining}" value=""/>
+		  			</td>
+		  			<td>
+		  				<p>　例:2017/01/01</p>
+		  			</td>
+		  		</tr>
+		  		<tr>
+		  			<td></td>
+		  			<td>
+		  				<p class="err_line" id="err_date"></p>
+		  			</td>
+		  		</tr>
+		  		<tr>
+		  			<td>
+		  				<label for ="user_contents">研修内容</label>
+		  			</td>
+		  			<td>
+		  				<textarea class="name" name="nippou_contents" rows="10" cols="60" th:field="*{nippouContents}"></textarea>
+		  			</td>
+		  		</tr>
+		  		<tr>
+		  			<td>
+		  				<label for ="user_study">学んだこと</label>
+		  			</td>
+		  			<td>
+		  				<textarea class="name" name="nippou_study" rows="10" cols="60" th:field="*{nippouStudy}"></textarea>
+		  			</td>
+		  		</tr>
+		  		<tr>
+		  			<td>
+		  				<label for ="user_problem">困ったこと</label>
+		  			</td>
+		  			<td>
+		  				<textarea class="name" name="nippou_problem" rows="10" cols="60" th:field="*{nippouProblem}"></textarea>
+		  			</td>
+		  		</tr>
+		  		<tr>
+		  			<td></td>
+		  			<td>
+			  			<div class="post">
+			       			<input type="submit" value="作成"/>
+			      		</div>
+		      		</td>
+		  		</tr>
+    		</tbody></table>
+    	</div>
     </form>
-</body>
+	</body>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!--
+    	<script src="js/bootstrap.min.js"></script>
+    -->
 </html>

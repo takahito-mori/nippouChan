@@ -24,12 +24,28 @@ div {
 .post{
 	width: 400px;
 	text-align: right;
-	margin: auto;
+	/*margin: auto;*/
 }
 
 label{
 	margin-right: 10px;
-	width:100px;
-	float: left;
+	width: 100px;
+	/*float: left;*/
 }
 
+td {
+	vertical-align: top;
+}
+
+#err_title, #err_date {
+	color: red;
+	margin-bottom: 10px;
+}
+
+.err_line {
+	margin: 0;
+}
+
+#date {
+	float: left;
+}

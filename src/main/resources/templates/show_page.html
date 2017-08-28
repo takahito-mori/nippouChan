@@ -4,10 +4,19 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<link href="/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="/css/show_page.css" rel="stylesheet" />
-	<link href="/css/home_page.css" rel="stylesheet" />
+	<link href="../css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../css/show_page.css" rel="stylesheet" />
+	<link href="../css/home_page.css" rel="stylesheet" />
+
+
+	 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript"
+     src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script type="text/javascript" src="../js/show_page.js"></script>
+
 </head>
+
 <body>
 <script>
 function Click_Sub() {
@@ -37,11 +46,20 @@ function Click_Sub() {
 <div class="col-xs-7" style="border:dotted 1px #000;height:1200px;">
   	<h2>日報閲覧</h2>
 
+
+
+  	<p id="update_contents"></p>
+
+
+
+
 	<div th:unless="${flag}">
     <form th:action="@{/nippou}" th:object="${nippou}" method="POST">
         <label for ="user_title">タイトル</label>
         <input class="name" type="text" name="nippou_title" size="59" th:value="*{nippouTitle}" readonly = "readonly"/><br/>
+        <p id="err_title" class="err_line"></p>
         <label for ="user_traning">日付</label>
+        <p id="err_date" class="err_line"></p>
         <input class="name" type="text" name="nippou_training" size="59" th:value="*{nippouTraining}" readonly = "readonly"/><br/>
         <label for ="user_name">名前</label>
         <input class="name" type="text" name="user_name" size="59" th:value="*{User.userName}" readonly = "readonly"/><br/>
@@ -57,11 +75,15 @@ function Click_Sub() {
     </div>
 
     <div th:if="${flag}">
-    <form th:action="@{/nippou/update}" th:object="${nippou}" method="POST">
+    <form id="update" th:action="@{/nippou/update}" th:object="${nippou}" method="POST">
         <label for ="user_title">タイトル</label>
-        <input class="name" type="text" name="nippou_title" size="59" th:value="*{nippouTitle}" th:field="*{nippouTitle}"/><br/>
+        <input type="text" name="nippou_title" size="59" th:value="*{nippouTitle}" th:field="*{nippouTitle}"/><br/>
+        <p id="err_title" class="err_line"></p>
+
         <label for ="user_traning">日付</label>
-        <input class="name" type="text" name="nippou_training" size="59" th:value="*{nippouTraining}" th:field="*{nippouTraining}" readonly = "readonly"/><br/>
+        <input type="text" name="nippou_training" size="59" th:value="*{nippouTraining}" th:field="*{nippouTraining}"/><br/>
+	    <p id="err_date" class="err_line"></p>
+
         <label for ="user_name">名前</label>
         <input class="name" type="text" name="user_name" size="59" th:value="*{user.userName}" th:field="*{user.userName}" readonly = "readonly"/><br/>
         <label for ="user_id">社員ID</label>
