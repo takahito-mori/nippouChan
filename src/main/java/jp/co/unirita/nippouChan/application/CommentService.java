@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import jp.co.unirita.nippouChan.domain.comment.Comment;
 import jp.co.unirita.nippouChan.domain.comment.CommentRepository;
 import jp.co.unirita.nippouChan.domain.nippou.Nippou;
-import jp.co.unirita.nippouChan.domain.user.User;
 
 
 
@@ -32,9 +31,6 @@ public class CommentService {
     }
 
     public void edit(Comment comment) {
-        User user = new User();
-        comment.setCommentId(comment.getCommentId());
-        user.setUserId(comment.getUser().getUserId());
         comment.setCommentEdit(new Timestamp(System.currentTimeMillis()));
         commentRepository.save(comment);
 

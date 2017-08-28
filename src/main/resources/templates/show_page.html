@@ -96,10 +96,10 @@
     </div>
  </div>
  <div class="col-xs-5" style="border:dotted 1px #000;height:1200px; overflow:scroll; overflow-x: hidden;">
- <h2>コメント一覧(全何件)</h2>
+     <h2 th:text="'コメント一覧(全'+${commentnum}+'件)'"></h2>
         <form th:action="@{/comment}" th:object="${newcomment}" method="POST">
 		<label for ="comment">コメント</label>
-        <textarea name="comment_content" rows="10" cols="60" th:field="*{commentContent}"></textarea><br/>
+        <textarea name="comment_content" rows="10" cols="50" th:field="*{commentContent}"></textarea><br/>
         <input type="hidden" name="nippou_id"  th:field="${nippou.nippouId}" th:value="${nippou.nippouId}"/>
 	    <input type="hidden" name="nippou_title" th:field="${nippou.nippouTitle}"/>
 	   	<input type="hidden" name="nippou_regi" th:field="${nippou.nippouRegister}" />
@@ -109,11 +109,14 @@
 	    <input type="hidden" name="nippou_study" th:field="${nippou.nippouStudy}" />
 	    <input type="hidden" name="nippou_problem" th:field="${nippou.nippouProblem}" />
 	    <input type="hidden" name="nippou_user" th:field="${nippou.User}" />
-        <input type="submit" name="send" value="送信" />
+        <input type="submit" name="send" value="送信" /><br/>
+        <hr size="12" color="#ff0000" />
     </form>
     <ul class="list-group">
-		<li class="comment_list" th:each="comments : ${comments}">
-			<p th:text="${comments.commentContent} + ' ' + ${comments.User.userName} + ' ' + ${comments.commentRegister}"></p>
+		<li class="comment_list" th:each="comments : ${comments}" th:object="${comments}">
+			<p th:text="*{commentContent}"></p><br/>
+			<div align="center" th:text="*{User.userName}+'	'+*{commentRegister}" ></div>
+			<hr size="12" color="#ff0000" />
 		</li>
 	</ul>
  </div>

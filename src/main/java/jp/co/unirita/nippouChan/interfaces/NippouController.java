@@ -44,6 +44,7 @@ public class NippouController {
         mav.addObject("nippou", nippou);
         mav.addObject("comments",comments);
         mav.addObject("newcomment",new Comment());
+        mav.addObject("commentnum", comments.size());
         mav.addObject("loginuser",user);
         int flag = 0;
         /*
@@ -78,7 +79,6 @@ public class NippouController {
     }
     @PostMapping("/update")
     public ModelAndView edit(@Validated Nippou nippou, BindingResult result,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
-   // 	System.out.println(nippou.getUser().getUserId());
         nippou.setNippouEdit(new Timestamp(System.currentTimeMillis()));
         nippou.setUser(userDetails.getUser());
         Nippou newnippou = nippouService.edit(nippou);
@@ -91,6 +91,7 @@ public class NippouController {
         mav.addObject("nippou", newnippou);
         mav.addObject("newcomment",new Comment());
         mav.addObject("loginuser",user);
+        mav.addObject("commentnum", comments.size());
         mav.addObject("flag",1);
 
         return mav;

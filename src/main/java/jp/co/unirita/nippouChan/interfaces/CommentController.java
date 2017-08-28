@@ -48,6 +48,7 @@ public class CommentController {
         mav.addObject("flag",flag);
         mav.addObject("loginuser",user);
         mav.addObject("comments", comments);
+        mav.addObject("commentnum", comments.size());
         mav.addObject("newcomment", new Comment());
         return mav;
 
