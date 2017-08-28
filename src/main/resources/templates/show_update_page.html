@@ -116,8 +116,11 @@
     </form>
     <ul class="list-group">
 		<li class="comment_list" th:each="comments : ${comments}" th:object="${comments}">
-			<p th:text="*{commentContent}"></p><br/>
-			<div align="center" th:text="*{User.userName}+'	'+*{commentRegister}" ></div>
+		<form method="post">
+			<textarea th:field="*{commentContent}"></textarea><br/>
+			<div align="center" th:text="*{User.userName}+'	'+${#dates.format(comments.commentRegister,'yyyy-MM-dd HH:mm:ss')}"></div>
+			<input class="btn btn-primary btn-sm" type="submit" value="送信" />
+		</form>
 			<hr size="12" color="#ff0000" />
 		</li>
 	</ul>
