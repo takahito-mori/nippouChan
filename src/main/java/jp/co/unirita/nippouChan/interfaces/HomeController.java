@@ -29,14 +29,16 @@ public class HomeController {
     public ModelAndView home(@RequestParam("pageno") Integer pageno, Nippou nippou,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
       Page<Nippou> page = nippouService.getPage(pageno);
       List<Nippou> report = page.getContent();
-      Integer totalPages = page.getTotalPages();
+      Integer totalPages = page.getTotalPages(); //addObject
       User user = userDetails.getUser();
+
 
       ModelAndView mav = new ModelAndView("home_page");
 
       mav.addObject("nippouPage", totalPages);
       mav.addObject("nippou", report);
       mav.addObject("loginuser",user);
+
 
       return mav;
     }
