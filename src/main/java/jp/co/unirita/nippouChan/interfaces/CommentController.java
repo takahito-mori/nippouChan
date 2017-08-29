@@ -7,11 +7,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import jp.co.unirita.nippouChan.application.CommentService;
+import jp.co.unirita.nippouChan.application.NippouService;
 import jp.co.unirita.nippouChan.application.user.NippouChanUserDetails;
 import jp.co.unirita.nippouChan.domain.comment.Comment;
 import jp.co.unirita.nippouChan.domain.nippou.Nippou;
@@ -22,6 +24,9 @@ import jp.co.unirita.nippouChan.domain.user.User;
 public class CommentController {
     @Autowired
     CommentService commentService;
+
+    @Autowired
+    NippouService nippouService;
 
     /**
      * (サンプル実装)
@@ -53,7 +58,8 @@ public class CommentController {
         return mav;
 
     }
-    @PostMapping("/edit/{id}")
+
+/*    @PostMapping("/edit/{id}")
     public ModelAndView edit(@Validated Comment comment, @Validated Comment comments, @Validated Nippou nippou,BindingResult result,@AuthenticationPrincipal NippouChanUserDetails userDetails) {
         User user = userDetails.getUser();
     	commentService.create(comment);
@@ -62,6 +68,22 @@ public class CommentController {
         mav.addObject("loginuser",user);
         mav.addObject("comments", comments2);
         mav.addObject("commentnum", comments2.size());
+        mav.addObject("newcomment", new Comment());
+        return mav;
+
+    }
+*/
+    @PostMapping("/delete/{nid}/{cid}")
+    public ModelAndView delete(@PathVariable("nid") int nippouId,@PathVariable("cid") int commentId, @AuthenticationPrincipal NippouChanUserDetails userDetails) {
+        User user = userDetails.getUser();
+    	commentService.delete(commentId);
+        ModelAndView mav = new ModelAndView("show_page");
+        Nippou nippou = nippouService.getOne(nippouId);
+        List<Comment> comments=commentService.getByNippou(nippou);
+        mav.addObject("loginuser",user);
+        mav.addObject("comments", comments);
+        mav.addObject("commentnum", comments.size());
+        mav.addObject("nippou", nippou);
         mav.addObject("newcomment", new Comment());
         return mav;
 
