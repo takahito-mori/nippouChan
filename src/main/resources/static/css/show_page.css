@@ -21,8 +21,13 @@ label{
 
 .post{
 	width: 500px;
-	text-align: right;
+	left: right;
 	margin: auto;
+}
+
+.post2{
+	width: 500px;
+	margin-left : 330px ;
 }
 
 #err_title, #err_date {
