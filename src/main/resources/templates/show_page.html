@@ -4,9 +4,9 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<link href="../css/bootstrap.min.css" rel="stylesheet" />
-	<link href="../css/show_page.css" rel="stylesheet" />
-	<link href="../css/home_page.css" rel="stylesheet" />
+	<link href="/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="/css/show_page.css" rel="stylesheet" />
+	<link href="/css/home_page.css" rel="stylesheet" />
 
 
 	 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -109,16 +109,22 @@
 	    <input type="hidden" name="nippou_study" th:field="${nippou.nippouStudy}" />
 	    <input type="hidden" name="nippou_problem" th:field="${nippou.nippouProblem}" />
 	    <input type="hidden" name="nippou_user" th:field="${nippou.User}" />
-        <input type="submit" name="send" value="送信" /><br/>
+	    <div class="post2">
+        	<input type="submit" name="send" value="送信" /><br/>
+        </div>
         <hr size="12" color="#ff0000" />
     </form>
- <ul class="list-group">
-		<li class="comment_list" th:each="comments.stat : ${comments}" th:object="${comments}">
-		<form th:action="@{'/comment/edit/' + ${commentId}}" method="post">
-			<textarea th:text="*{commentContent}" th:value="*{commentContent}" id="${stat.size}"></textarea><br/>
-			<div align="center" th:text="*{User.userName}+'	'+${#dates.format(commentRegister,'yyyy-MM-dd HH:mm:ss')}"></div>
-			<input class="btn btn-primary btn-sm" type="submit" value="送信" />
-		</form>
+ 	<ul class="list-group">
+		<li class="comment_list" th:each="comments : ${comments}" th:object="${comments}">
+			<p th:text="*{commentContent}"></p>
+			<div class="post2" th:if="${loginuser.UserId} eq *{User.userId}">
+				<form th:action="@{'/comment/delete/' + ${nippou.nippouId} +'/'+ *{commentId}}" method="post">
+					<input class="btn btn-primary btn-sm" type="submit" name="delete" value="削除" /><br/><br/>
+				</form>
+			</div>
+			<div align="center" th:text="*{User.userName}+'	'+${#dates.format(comments.commentRegister,'yyyy-MM-dd HH:mm:ss')}"></div>
+			<!-- div th:if="${flag}"-->
+			<!-- /div-->
 			<hr size="12" color="#ff0000" />
 		</li>
 	</ul>
