@@ -17,10 +17,6 @@ div {
 	margin-left : auto;
 }
 
-.name{
-	margin-bottom: 10px;
-}
-
 .post{
 	width: 400px;
 	text-align: right;
@@ -33,3 +29,8 @@ label{
 	float: left;
 }
 
+#err_name, #err_kana, #err_id, #err_mail, #err_password {
+	color: red;
+	margin-bottom: 10px;
+	margin-left: 110px;
+}

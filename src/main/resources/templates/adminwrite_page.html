@@ -4,9 +4,16 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<link href="/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="/css/write_page.css" rel="stylesheet" />
-	<link href="/css/home_page.css" rel="stylesheet" />
+	<link href="../css/bootstrap.min.css" rel="stylesheet" />
+	<!-- <link href="../css/write_page.css" rel="stylesheet" />-->
+	<link href="../css/home_page.css" rel="stylesheet" />
+	<link href="../css/adminwrite_page.css" rel="stylesheet" />
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script type="text/javascript"
+     src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script type="text/javascript" src="../js/adminwrite_page.js"></script>
 </head>
 <body>
 	<!-- 1.ナビゲーションバーの設定 -->
@@ -26,15 +33,24 @@
     <form th:action="@{/user}" th:object="${user}" method="POST">
         <div>
 	        <label for ="user_name">名前</label>
-	        <input class="name" type="text" name="user_name" size="59" th:field="*{userName}" /><br/>
+	        <input type="text" name="user_name" size="59" th:field="*{userName}" /><br/>
+	        <p id="err_name"></p>
+
 	        <label for ="user_kana">フリガナ</label>
-	        <input class="name" type="text" name="user_kana" size="59" th:field="*{userKana}" /><br/>
+	        <input type="text" name="user_kana" size="59" th:field="*{userKana}" /><br/>
+	        <p id="err_kana"></p>
+
 	        <label for ="user_id">社員ID</label>
-	        <input class="name" type="text" name="user_id" size="59" th:field="*{userId}" /><br/>
+	        <input type="text" name="user_id" size="59" th:field="*{userId}" /><br/>
+	        <p id="err_id"></p>
+
 	        <label for ="user_mail">メールアドレス</label>
-	        <input class="name" type="text" name="user_mail" size="59" th:field="*{userMail}" /><br/>
+	        <input type="text" name="user_mail" size="59" th:field="*{userMail}" /><br/>
+	        <p id="err_mail"></p>
+
 	        <label for ="user_password">パスワード</label>
-	        <input class="name" type="text" name="user_password" size="59" th:field="*{userPassword}" /><br/>
+	        <input type="text" name="user_password" size="59" th:field="*{userPassword}" /><br/>
+			<p id="err_password"></p>
 
 	        <div class="post">
 	        	<input type="submit" value="登録" />

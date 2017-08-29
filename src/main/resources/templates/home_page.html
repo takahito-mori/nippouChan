@@ -78,8 +78,8 @@
 
 	<nav>
 	<ul class="pagination">
-		<li class="disabled">
-			<a href="#" aria-label="前のページへ">
+		<li id="page">
+			<a th:href="'/home?pageno=' + ${pageNumber-1}" aria-label="前のページへ">
 				<span aria-hidden="true">«</span>
 			</a>
 		</li>
@@ -87,7 +87,7 @@
 			<a th:each="i : ${#numbers.sequence(0, nippouPage-1)}" th:text="${i+1}" th:href="'/home?pageno=' + ${i}"></a>
 		</li>
 		<li>
-			<a href="" aria-label="次のページへ">
+			<a th:href="'/home?pageno=' + ${pageNumber+1}" aria-label="次のページへ">
 				<span aria-hidden="true">»</span>
 			</a>
 		</li>
